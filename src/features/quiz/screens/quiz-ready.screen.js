@@ -30,7 +30,7 @@ const QuizReadyScreen = () => {
       </View>
       <TouchableOpacity onPress={() => console.log('pressed')}>
         <Button icon="flag-checkered" mode="contained" buttonColor="#666AF6">
-          Start
+          Start Quiz
         </Button>
       </TouchableOpacity>
     </View>
