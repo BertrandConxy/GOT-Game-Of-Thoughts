@@ -10,6 +10,7 @@ const QuizNavigator = () => {
     <QuizStack.Navigator
       screenOptions={{
         headerShown: false,
+        contentStyle: { paddingHorizontal: 10 },
       }}
     >
       <QuizStack.Screen name="QuizReady" component={QuizReadyScreen} />
