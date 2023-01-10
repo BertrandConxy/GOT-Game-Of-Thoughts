@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Badge } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
@@ -6,6 +6,21 @@ import questions from '../../../services/quiz/mock/questions'
 
 const QuizScreen = () => {
   const { question, options, correctAnswerIndex } = questions[0]
+  // points
+  const [points, setPoints] = useState(0)
+  // index of question
+  const [index, setIndex] = useState(0)
+  // Answer status(true/false)
+  const [answerStatus, setAnswerStatus] = useState(null)
+  // answers
+  const [answers, setAnswers] = useState([])
+  // selected answer
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null)
+  // counter
+  const [counter, setCounter] = useState(15)
+  // interval
+  let interval = null
+
   return (
     <SafeArea>
       <View style={[styles.flexRow, styles.spaceBtn]}>
