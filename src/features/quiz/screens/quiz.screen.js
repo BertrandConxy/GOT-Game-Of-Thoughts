@@ -16,15 +16,16 @@ const QuizScreen = () => {
       </View>
       <View style={[styles.flexRow, styles.spaceBtn]}>
         <Text style={styles.subHeading}>Your Progress</Text>
-        <Text>(0/5) answered</Text>
+        <Text>(0/5) questions answered</Text>
       </View>
-
+      {/* Progress bar */}
+      <View style={styles.bar}></View>
       <View style={styles.questionContainer}>
         <Text style={styles.question}>{question}</Text>
         <ScrollView>
           {options.map((opt) => (
-            <View key={opt.id} style={styles.flexRow}>
-              <Text>{opt.options}</Text>
+            <View key={opt.id} style={[styles.flexRow, styles.contentWrapper]}>
+              <Text style={styles.rounded}>{opt.options}</Text>
               <Text>{opt.answer}</Text>
             </View>
           ))}
@@ -67,5 +68,25 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0F8FF',
     padding: 10,
     borderRadius: 6,
+  },
+  rounded: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    padding: 10,
+    textAlign: 'center',
+    borderColor: '#666AF6',
+    borderWidth: 1,
+    marginRight: 5,
+  },
+  contentWrapper: {
+    borderWidth: 1,
+    borderColor: '#666AF6',
+    borderRadius: 22,
+    marginVertical: 10,
+  },
+
+  bar: {
+    marginVertical: 15,
   },
 })
