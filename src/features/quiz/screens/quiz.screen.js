@@ -10,7 +10,7 @@ import { Badge } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
 import questions from '../../../services/quiz/mock/questions'
 
-const QuizScreen = () => {
+const QuizScreen = ({ navigation }) => {
   // index of question
   const [index, setIndex] = useState(0)
   // current question
@@ -44,44 +44,48 @@ const QuizScreen = () => {
       if (selectedAnswerIndex === correctAnswerIndex) {
         setPoints((points) => points + 5)
         setAnswerStatus(true)
-        answers.push({ question: index + 1, answer: true })
+        setAnswers([...answers, { question: index + 1, answer: false }])
       } else {
         setAnswerStatus(false)
-        answers.push({ question: index + 1, answer: false })
+        setAnswers([...answers, { question: index + 1, answer: false }])
       }
     }
   }, [selectedAnswerIndex])
 
   // resetting selectedAnswerIndex after each question
   useEffect(() => {
-    selectedAnswerIndex(null)
+    setSelectedAnswerIndex(null)
     setAnswerStatus(null)
   }, [currentQuestion])
 
-  // counter reset
-  useEffect(() => {
-    interval = setTimeout(countDown, 1000)
-    return () => {
-      clearTimeout(interval)
-    }
-  }, [counter])
+  // // counter reset
+  // useEffect(() => {
+  //   interval = setTimeout(countDown, 1000)
+  //   return () => {
+  //     clearTimeout(interval)
+  //   }
+  // }, [counter])
 
-  // If the index changes
-  useEffect(() => {
-    if (!interval) {
-      setCounter(15)
-    }
-  }, [index])
+  // // If the index changes
+  // useEffect(() => {
+  //   if (!interval) {
+  //     setCounter(15)
+  //   }
+  // }, [index])
 
   // After completing the quiz
-  useEffect(() => {}, [currentQuestion])
+  useEffect(() => {
+    if (index + 1 > questions.length) {
+      navigation.navigate('ResultScreen', { answers: answers, points: points })
+    }
+  }, [currentQuestion])
 
   return (
     <SafeArea>
       <View style={[styles.flexRow, styles.spaceBtn]}>
         <Text style={styles.heading}>Quiz Challenge 1</Text>
         <Badge size={45} style={styles.badge}>
-          15
+          {counter}
         </Badge>
       </View>
       <View style={[styles.flexRow, styles.spaceBtn]}>
@@ -96,11 +100,20 @@ const QuizScreen = () => {
           {options.map((opt) => (
             <TouchableOpacity
               key={opt.id}
-              onPress={() =>
+              onPress={() => {
                 selectedAnswerIndex === null && setSelectedAnswerIndex(opt.id)
-              }
+              }}
             >
-              <View style={[styles.flexRow, styles.contentWrapper]}>
+              <View
+                style={
+                  selectedAnswerIndex === opt.id && opt.id == correctAnswerIndex
+                    ? [styles.flexRow, styles.contentWrapper, styles.correct]
+                    : selectedAnswerIndex != null &&
+                      selectedAnswerIndex == opt.id
+                    ? [styles.flexRow, styles.contentWrapper, styles.wrong]
+                    : [styles.flexRow, styles.contentWrapper]
+                }
+              >
                 <Text style={styles.rounded}>{opt.options}</Text>
                 <Text>{opt.answer}</Text>
               </View>
@@ -165,5 +178,11 @@ const styles = StyleSheet.create({
 
   bar: {
     marginVertical: 15,
+  },
+  correct: {
+    backgroundColor: '#7EF893',
+  },
+  wrong: {
+    backgroundColor: '#F57D7D',
   },
 })
