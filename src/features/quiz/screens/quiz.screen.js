@@ -11,7 +11,9 @@ import { SafeArea } from '../../../utils/safe-area.components'
 import questions from '../../../services/quiz/mock/questions'
 
 const QuizScreen = () => {
-  const { question, options, correctAnswerIndex } = questions[0]
+  // current question
+  const [currentQuestion, setCurrentQuestion] = useState(questions[0])
+  const { question, options, correctAnswerIndex } = currentQuestion
   // points
   const [points, setPoints] = useState(0)
   // index of question
@@ -26,6 +28,8 @@ const QuizScreen = () => {
   const [counter, setCounter] = useState(15)
   // interval
   let interval = null
+
+  const countDown = () => {}
 
   // Pressing the correct answer option
   useEffect(() => {
@@ -42,7 +46,13 @@ const QuizScreen = () => {
   }, [selectedAnswerIndex])
 
   // resetting selectedAnswerIndex after each question
-  useEffect(() => {}, [])
+  useEffect(() => {
+    selectedAnswerIndex(null)
+    setAnswerStatus(null)
+  }, [currentQuestion])
+
+  // counter reset
+  useEffect(() => {}, [counter])
 
   return (
     <SafeArea>
