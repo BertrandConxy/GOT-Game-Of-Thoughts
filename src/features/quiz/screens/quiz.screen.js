@@ -27,6 +27,23 @@ const QuizScreen = () => {
   // interval
   let interval = null
 
+  // Pressing the correct answer option
+  useEffect(() => {
+    if (selectedAnswerIndex != null) {
+      if (selectedAnswerIndex === correctAnswerIndex) {
+        setPoints((points) => points + 5)
+        setAnswerStatus(true)
+        answers.push({ question: index + 1, answer: true })
+      } else {
+        setAnswerStatus(false)
+        answers.push({ question: index + 1, answer: false })
+      }
+    }
+  }, [selectedAnswerIndex])
+
+  // resetting selectedAnswerIndex after each question
+  useEffect(() => {}, [])
+
   return (
     <SafeArea>
       <View style={[styles.flexRow, styles.spaceBtn]}>
@@ -47,7 +64,9 @@ const QuizScreen = () => {
           {options.map((opt) => (
             <TouchableOpacity
               key={opt.id}
-              onPress={() => console.log('pressed')}
+              onPress={() =>
+                selectedAnswerIndex === null && setSelectedAnswerIndex(opt.id)
+              }
             >
               <View style={[styles.flexRow, styles.contentWrapper]}>
                 <Text style={styles.rounded}>{opt.options}</Text>
