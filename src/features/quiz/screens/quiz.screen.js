@@ -11,13 +11,13 @@ import { SafeArea } from '../../../utils/safe-area.components'
 import questions from '../../../services/quiz/mock/questions'
 
 const QuizScreen = () => {
+  // index of question
+  const [index, setIndex] = useState(0)
   // current question
-  const [currentQuestion, setCurrentQuestion] = useState(questions[0])
+  const currentQuestion = questions[index]
   const { question, options, correctAnswerIndex } = currentQuestion
   // points
   const [points, setPoints] = useState(0)
-  // index of question
-  const [index, setIndex] = useState(0)
   // Answer status(true/false)
   const [answerStatus, setAnswerStatus] = useState(null)
   // answers
@@ -28,8 +28,15 @@ const QuizScreen = () => {
   const [counter, setCounter] = useState(15)
   // interval
   let interval = null
-
-  const countDown = () => {}
+  // Countdown function
+  const countDown = () => {
+    if (counter >= 1) {
+      setCounter((counter) => counter - 1)
+    } else if (counter === 0) {
+      setIndex((index) => index + 1)
+      setCounter(15)
+    }
+  }
 
   // Pressing the correct answer option
   useEffect(() => {
@@ -52,7 +59,22 @@ const QuizScreen = () => {
   }, [currentQuestion])
 
   // counter reset
-  useEffect(() => {}, [counter])
+  useEffect(() => {
+    interval = setTimeout(countDown, 1000)
+    return () => {
+      clearTimeout(interval)
+    }
+  }, [counter])
+
+  // If the index changes
+  useEffect(() => {
+    if (!interval) {
+      setCounter(15)
+    }
+  }, [index])
+
+  // After completing the quiz
+  useEffect(() => {}, [currentQuestion])
 
   return (
     <SafeArea>
