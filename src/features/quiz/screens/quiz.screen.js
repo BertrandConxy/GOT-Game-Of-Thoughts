@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { Badge } from 'react-native-paper'
+import { CheckOutlined } from 'antd'
 import { SafeArea } from '../../../utils/safe-area.components'
 import questions from '../../../services/quiz/mock/questions'
 
@@ -114,7 +115,17 @@ const QuizScreen = ({ navigation }) => {
                     : [styles.flexRow, styles.contentWrapper]
                 }
               >
-                <Text style={styles.rounded}>{opt.options}</Text>
+                <Text style={styles.rounded}>
+                  {selectedAnswerIndex === opt.id &&
+                  opt.id == correctAnswerIndex ? (
+                    <CheckOutlined />
+                  ) : selectedAnswerIndex != null &&
+                    selectedAnswerIndex == opt.id ? (
+                    <CheckOutlined />
+                  ) : (
+                    <Text>{opt.options}</Text>
+                  )}
+                </Text>
                 <Text>{opt.answer}</Text>
               </View>
             </TouchableOpacity>
