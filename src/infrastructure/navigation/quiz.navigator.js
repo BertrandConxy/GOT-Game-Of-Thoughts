@@ -1,28 +1,22 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import RestaurantScreen from '../../features/restaurants/screens/restaurants.screen'
-import RestaurantDetail from '../../features/restaurants/screens/restaurant-detail.screen'
+import QuizReadyScreen from '../../features/quiz/screens/quiz-ready.screen'
+import QuizScreen from '../../features/quiz/screens/quiz.screen'
 
-const RestaurantStack = createNativeStackNavigator()
+const QuizStack = createNativeStackNavigator()
 
-const RestaurantsNavigator = () => {
+const QuizNavigator = () => {
   return (
-    <RestaurantStack.Navigator
+    <QuizStack.Navigator
       screenOptions={{
         headerShown: false,
       }}
     >
-      <RestaurantStack.Screen
-        name="RestaurantList"
-        component={RestaurantScreen}
-      />
+      <QuizStack.Screen name="QuizReady" component={QuizReadyScreen} />
 
-      <RestaurantStack.Screen
-        name="RestaurantDetail"
-        component={RestaurantDetail}
-      />
-    </RestaurantStack.Navigator>
+      <QuizStack.Screen name="Quiz" component={QuizScreen} />
+    </QuizStack.Navigator>
   )
 }
 
-export default RestaurantsNavigator
+export default QuizNavigator
