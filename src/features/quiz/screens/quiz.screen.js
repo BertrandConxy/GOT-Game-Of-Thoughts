@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 import React from 'react'
+import { SafeArea } from '../../../utils/safe-area.components'
 
 const QuizScreen = () => {
   return (
-    <View>
+    <SafeArea>
       <Text>QuizScreen</Text>
-    </View>
+    </SafeArea>
   )
 }
 
