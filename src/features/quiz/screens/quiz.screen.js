@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native'
 import { Badge } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
 import questions from '../../../services/quiz/mock/questions'
@@ -39,10 +45,15 @@ const QuizScreen = () => {
         <Text style={styles.question}>{question}</Text>
         <ScrollView>
           {options.map((opt) => (
-            <View key={opt.id} style={[styles.flexRow, styles.contentWrapper]}>
-              <Text style={styles.rounded}>{opt.options}</Text>
-              <Text>{opt.answer}</Text>
-            </View>
+            <TouchableOpacity
+              key={opt.id}
+              onPress={() => console.log('pressed')}
+            >
+              <View style={[styles.flexRow, styles.contentWrapper]}>
+                <Text style={styles.rounded}>{opt.options}</Text>
+                <Text>{opt.answer}</Text>
+              </View>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       </View>
