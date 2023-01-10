@@ -1,12 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import QuizNavigator from './quiz.navigator'
 
 const AppNavigator = () => {
-  return (
-    <View>
-      <Text>AppNavigator</Text>
-    </View>
-  )
+  return <QuizNavigator />
 }
 
 export default AppNavigator
