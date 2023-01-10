@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { Button } from 'react-native-paper'
 import React from 'react'
 
-const QuizReadyScreen = () => {
+const QuizReadyScreen = ({ navigation }) => {
   return (
     <View style={styles.readyView}>
       <Image
@@ -28,7 +28,7 @@ const QuizReadyScreen = () => {
         </Text>
         <Text style={styles.listItem}> * All questions are compulsory </Text>
       </View>
-      <TouchableOpacity onPress={() => console.log('pressed')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Quiz')}>
         <Button icon="flag-checkered" mode="contained" buttonColor="#666AF6">
           Start Quiz
         </Button>

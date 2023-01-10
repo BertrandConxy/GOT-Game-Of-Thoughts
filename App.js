@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar'
-import QuizReadyScreen from './src/features/quiz/screens/quiz-ready.screen'
+import Navigation from './src/infrastructure/navigation'
 import { StyleSheet, View } from 'react-native'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <QuizReadyScreen />
+      <Navigation />
       <StatusBar style="auto" />
     </View>
   )
