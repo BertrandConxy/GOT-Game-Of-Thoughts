@@ -6,8 +6,8 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native'
+import Icon from 'react-native-vector-icons/Entypo'
 import { Badge } from 'react-native-paper'
-import { CheckOutlined } from 'antd'
 import { SafeArea } from '../../../utils/safe-area.components'
 import questions from '../../../services/quiz/mock/questions'
 
@@ -118,10 +118,10 @@ const QuizScreen = ({ navigation }) => {
                 <Text style={styles.rounded}>
                   {selectedAnswerIndex === opt.id &&
                   opt.id == correctAnswerIndex ? (
-                    <CheckOutlined />
+                    <Icon name="check" size={22} color="#005D0C" />
                   ) : selectedAnswerIndex != null &&
                     selectedAnswerIndex == opt.id ? (
-                    <CheckOutlined />
+                    <Icon name="cross" size={22} color="#F02E2E" />
                   ) : (
                     <Text>{opt.options}</Text>
                   )}
