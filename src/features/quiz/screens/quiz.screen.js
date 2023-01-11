@@ -30,15 +30,6 @@ const QuizScreen = ({ navigation }) => {
   const [counter, setCounter] = useState(15)
   // interval
   let interval = null
-  // Countdown function
-  const countDown = () => {
-    if (counter >= 1) {
-      setCounter((counter) => counter - 1)
-    } else if (counter === 0) {
-      setIndex((index) => index + 1)
-      setCounter(15)
-    }
-  }
 
   // Progress bar
   const progressPercentage = Math.floor((index / questions.length) * 100)
@@ -63,27 +54,35 @@ const QuizScreen = ({ navigation }) => {
     setAnswerStatus(null)
   }, [index])
 
-  // // counter reset
-  // useEffect(() => {
-  //   interval = setTimeout(countDown, 1000)
-  //   return () => {
-  //     clearTimeout(interval)
-  //   }
-  // }, [counter])
-
-  // // If the index changes
-  // useEffect(() => {
-  //   if (!interval) {
-  //     setCounter(15)
-  //   }
-  // }, [index])
-
-  // After completing the quiz
-  useEffect(() => {
-    if (index + 1 > questions.length) {
-      navigation.navigate('QuizResults', { answers: answers, points: points })
+  // Countdown function
+  const countDown = () => {
+    if (counter >= 1) {
+      setCounter((counter) => counter - 1)
     }
-  }, [currentQuestion])
+    if (counter === 0) {
+      if (index + 2 > questions.length) {
+        navigation.navigate('QuizResults', { answers: answers, points: points })
+        return
+      }
+      setIndex((index) => index + 1)
+      setCounter(15)
+    }
+  }
+
+  // counter reset
+  useEffect(() => {
+    interval = setTimeout(countDown, 1000)
+    return () => {
+      clearTimeout(interval)
+    }
+  }, [counter])
+
+  // If the index changes
+  useEffect(() => {
+    if (!interval) {
+      setCounter(15)
+    }
+  }, [index])
 
   return (
     <SafeArea>
