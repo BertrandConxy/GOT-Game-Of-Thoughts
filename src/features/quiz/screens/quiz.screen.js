@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Pressable,
   TouchableOpacity,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
@@ -42,10 +43,10 @@ const QuizScreen = ({ navigation }) => {
   // Pressing the correct answer option
   useEffect(() => {
     if (selectedAnswerIndex != null) {
-      if (selectedAnswerIndex === correctAnswerIndex) {
+      if (selectedAnswerIndex == correctAnswerIndex) {
         setPoints((points) => points + 5)
         setAnswerStatus(true)
-        setAnswers([...answers, { question: index + 1, answer: false }])
+        setAnswers([...answers, { question: index + 1, answer: true }])
       } else {
         setAnswerStatus(false)
         setAnswers([...answers, { question: index + 1, answer: false }])
@@ -57,7 +58,7 @@ const QuizScreen = ({ navigation }) => {
   useEffect(() => {
     setSelectedAnswerIndex(null)
     setAnswerStatus(null)
-  }, [currentQuestion])
+  }, [index])
 
   // // counter reset
   // useEffect(() => {
@@ -132,6 +133,48 @@ const QuizScreen = ({ navigation }) => {
           ))}
         </ScrollView>
       </View>
+      <View style={answerStatus === null ? null : styles.answerStatusView}>
+        {answerStatus === null ? null : (
+          <Text style={answerStatus == null ? null : styles.answerStatus}>
+            {!!answerStatus ? 'Correct Answer' : 'Wrong Answer'}
+          </Text>
+        )}
+
+        {index + 1 >= questions.length ? (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('ResultScreen', {
+                answers: answers,
+                points: points,
+              })
+            }
+            style={{
+              backgroundColor: 'green',
+              padding: 10,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginTop: 20,
+              borderRadius: 6,
+            }}
+          >
+            <Text style={{ color: 'white' }}>Done</Text>
+          </TouchableOpacity>
+        ) : answerStatus === null ? null : (
+          <TouchableOpacity
+            onPress={() => setIndex(index + 1)}
+            style={{
+              backgroundColor: 'green',
+              padding: 10,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginTop: 20,
+              borderRadius: 6,
+            }}
+          >
+            <Text style={{ color: 'white' }}>Next Question</Text>
+          </TouchableOpacity>
+        )}
+      </View>
     </SafeArea>
   )
 }
@@ -195,5 +238,17 @@ const styles = StyleSheet.create({
   },
   wrong: {
     backgroundColor: '#F57D7D',
+  },
+  answerStatusView: {
+    marginTop: 45,
+    backgroundColor: '#F0F8FF',
+    padding: 10,
+    borderRadius: 7,
+    height: 120,
+  },
+  answerStatus: {
+    fontSize: 17,
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 })
