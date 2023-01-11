@@ -95,10 +95,19 @@ const QuizScreen = ({ navigation }) => {
       </View>
       <View style={[styles.flexRow, styles.spaceBtn]}>
         <Text style={styles.subHeading}>Your Progress</Text>
-        <Text>(0/5) questions answered</Text>
+        <Text>
+          ({index}/{questions.length}) questions answered
+        </Text>
       </View>
       {/* Progress bar */}
-      <View style={styles.bar}></View>
+      <View style={styles.bar}>
+        <Text
+          style={{
+            width: `${progressPercentage}%`,
+            ...styles.barProgress,
+          }}
+        ></Text>
+      </View>
       <View style={styles.questionContainer}>
         <Text style={styles.question}>{question}</Text>
         <ScrollView>
@@ -230,7 +239,23 @@ const styles = StyleSheet.create({
   },
 
   bar: {
-    marginVertical: 15,
+    marginVertical: 10,
+    backgroundColor: 'white',
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 10,
+    borderRadius: 20,
+    justifyContent: 'center',
+  },
+  barProgress: {
+    backgroundColor: '#666AF6',
+    borderRadius: 12,
+    position: 'absolute',
+    left: 0,
+    height: 10,
+    right: 0,
+    marginTop: 20,
   },
   correct: {
     backgroundColor: '#7EF893',
