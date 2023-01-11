@@ -78,7 +78,7 @@ const QuizScreen = ({ navigation }) => {
   // After completing the quiz
   useEffect(() => {
     if (index + 1 > questions.length) {
-      navigation.navigate('ResultScreen', { answers: answers, points: points })
+      navigation.navigate('QuizResults', { answers: answers, points: points })
     }
   }, [currentQuestion])
 
@@ -143,7 +143,7 @@ const QuizScreen = ({ navigation }) => {
         {index + 1 >= questions.length ? (
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('ResultScreen', {
+              navigation.navigate('QuizResults', {
                 answers: answers,
                 points: points,
               })
