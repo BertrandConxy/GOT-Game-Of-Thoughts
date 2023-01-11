@@ -40,6 +40,9 @@ const QuizScreen = ({ navigation }) => {
     }
   }
 
+  // Progress bar
+  const progressPercentage = Math.floor((index / questions.length) * 100)
+
   // Pressing the correct answer option
   useEffect(() => {
     if (selectedAnswerIndex != null) {
