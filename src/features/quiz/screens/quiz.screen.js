@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
-import { Badge } from 'react-native-paper'
+import { Badge, Button } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
 import questions from '../../../services/quiz/mock/questions'
 
@@ -148,30 +148,26 @@ const QuizScreen = ({ navigation }) => {
                 points: points,
               })
             }
-            style={{
-              backgroundColor: 'green',
-              padding: 10,
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              marginTop: 20,
-              borderRadius: 6,
-            }}
           >
-            <Text style={{ color: 'white' }}>Done</Text>
+            <Button
+              icon="check-decagram"
+              mode="contained"
+              style={styles.button}
+              buttonColor="#666AF6"
+            >
+              Done
+            </Button>
           </TouchableOpacity>
         ) : answerStatus === null ? null : (
-          <TouchableOpacity
-            onPress={() => setIndex(index + 1)}
-            style={{
-              backgroundColor: 'green',
-              padding: 10,
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              marginTop: 20,
-              borderRadius: 6,
-            }}
-          >
-            <Text style={{ color: 'white' }}>Next Question</Text>
+          <TouchableOpacity onPress={() => setIndex(index + 1)}>
+            <Button
+              mode="contained"
+              icon="skip-next"
+              style={styles.button}
+              buttonColor="#666AF6"
+            >
+              Next Question
+            </Button>
           </TouchableOpacity>
         )}
       </View>
@@ -250,5 +246,12 @@ const styles = StyleSheet.create({
     fontSize: 17,
     textAlign: 'center',
     fontWeight: 'bold',
+  },
+
+  button: {
+    padding: 1,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 15,
   },
 })
