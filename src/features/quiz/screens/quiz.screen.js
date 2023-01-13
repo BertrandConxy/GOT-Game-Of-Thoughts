@@ -4,10 +4,11 @@ import {
   StyleSheet,
   Text,
   View,
+  Pressable,
   TouchableOpacity,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
-import { Badge } from 'react-native-paper'
+import { Badge, Button } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
 import questions from '../../../services/quiz/mock/questions'
 
@@ -29,23 +30,17 @@ const QuizScreen = ({ navigation }) => {
   const [counter, setCounter] = useState(15)
   // interval
   let interval = null
-  // Countdown function
-  const countDown = () => {
-    if (counter >= 1) {
-      setCounter((counter) => counter - 1)
-    } else if (counter === 0) {
-      setIndex((index) => index + 1)
-      setCounter(15)
-    }
-  }
+
+  // Progress bar
+  const progressPercentage = Math.floor((index / questions.length) * 100)
 
   // Pressing the correct answer option
   useEffect(() => {
     if (selectedAnswerIndex != null) {
-      if (selectedAnswerIndex === correctAnswerIndex) {
+      if (selectedAnswerIndex == correctAnswerIndex) {
         setPoints((points) => points + 5)
         setAnswerStatus(true)
-        setAnswers([...answers, { question: index + 1, answer: false }])
+        setAnswers([...answers, { question: index + 1, answer: true }])
       } else {
         setAnswerStatus(false)
         setAnswers([...answers, { question: index + 1, answer: false }])
@@ -57,29 +52,37 @@ const QuizScreen = ({ navigation }) => {
   useEffect(() => {
     setSelectedAnswerIndex(null)
     setAnswerStatus(null)
-  }, [currentQuestion])
+  }, [index])
 
-  // // counter reset
-  // useEffect(() => {
-  //   interval = setTimeout(countDown, 1000)
-  //   return () => {
-  //     clearTimeout(interval)
-  //   }
-  // }, [counter])
-
-  // // If the index changes
-  // useEffect(() => {
-  //   if (!interval) {
-  //     setCounter(15)
-  //   }
-  // }, [index])
-
-  // After completing the quiz
-  useEffect(() => {
-    if (index + 1 > questions.length) {
-      navigation.navigate('ResultScreen', { answers: answers, points: points })
+  // Countdown function
+  const countDown = () => {
+    if (counter >= 1) {
+      setCounter((counter) => counter - 1)
     }
-  }, [currentQuestion])
+    if (counter === 0) {
+      if (index + 2 > questions.length) {
+        navigation.navigate('QuizResults', { answers: answers, points: points })
+        return
+      }
+      setIndex((index) => index + 1)
+      setCounter(15)
+    }
+  }
+
+  // counter reset
+  useEffect(() => {
+    interval = setTimeout(countDown, 1000)
+    return () => {
+      clearTimeout(interval)
+    }
+  }, [counter])
+
+  // If the index changes
+  useEffect(() => {
+    if (!interval) {
+      setCounter(15)
+    }
+  }, [index])
 
   return (
     <SafeArea>
@@ -91,10 +94,19 @@ const QuizScreen = ({ navigation }) => {
       </View>
       <View style={[styles.flexRow, styles.spaceBtn]}>
         <Text style={styles.subHeading}>Your Progress</Text>
-        <Text>(0/5) questions answered</Text>
+        <Text>
+          ({index}/{questions.length}) questions answered
+        </Text>
       </View>
       {/* Progress bar */}
-      <View style={styles.bar}></View>
+      <View style={styles.bar}>
+        <Text
+          style={{
+            width: `${progressPercentage}%`,
+            ...styles.barProgress,
+          }}
+        ></Text>
+      </View>
       <View style={styles.questionContainer}>
         <Text style={styles.question}>{question}</Text>
         <ScrollView>
@@ -131,6 +143,44 @@ const QuizScreen = ({ navigation }) => {
             </TouchableOpacity>
           ))}
         </ScrollView>
+      </View>
+      <View style={answerStatus === null ? null : styles.answerStatusView}>
+        {answerStatus === null ? null : (
+          <Text style={answerStatus == null ? null : styles.answerStatus}>
+            {!!answerStatus ? 'Correct Answer' : 'Wrong Answer'}
+          </Text>
+        )}
+
+        {index + 1 >= questions.length ? (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('QuizResults', {
+                answers: answers,
+                points: points,
+              })
+            }
+          >
+            <Button
+              icon="check-decagram"
+              mode="contained"
+              style={styles.button}
+              buttonColor="#666AF6"
+            >
+              Done
+            </Button>
+          </TouchableOpacity>
+        ) : answerStatus === null ? null : (
+          <TouchableOpacity onPress={() => setIndex(index + 1)}>
+            <Button
+              mode="contained"
+              icon="skip-next"
+              style={styles.button}
+              buttonColor="#666AF6"
+            >
+              Next Question
+            </Button>
+          </TouchableOpacity>
+        )}
       </View>
     </SafeArea>
   )
@@ -188,12 +238,47 @@ const styles = StyleSheet.create({
   },
 
   bar: {
-    marginVertical: 15,
+    marginVertical: 10,
+    backgroundColor: 'white',
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 10,
+    borderRadius: 20,
+    justifyContent: 'center',
+  },
+  barProgress: {
+    backgroundColor: '#666AF6',
+    borderRadius: 12,
+    position: 'absolute',
+    left: 0,
+    height: 10,
+    right: 0,
+    marginTop: 20,
   },
   correct: {
     backgroundColor: '#7EF893',
   },
   wrong: {
     backgroundColor: '#F57D7D',
+  },
+  answerStatusView: {
+    marginTop: 45,
+    backgroundColor: '#F0F8FF',
+    padding: 10,
+    borderRadius: 7,
+    height: 120,
+  },
+  answerStatus: {
+    fontSize: 17,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+
+  button: {
+    padding: 1,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 15,
   },
 })
