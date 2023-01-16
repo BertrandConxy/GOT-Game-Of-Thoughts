@@ -14,6 +14,27 @@ const HomeScreen = () => {
       <ScrollView style={styles.cardView}>
         <Card elevation={2} mode="elevated" style={styles.card}>
           <Card.Content>
+            <Card.Cover
+              style={styles.cardImage}
+              source={{ uri: 'https://picsum.photos/700' }}
+            />
+            <Text style={styles.cardText} variant="titleLarge">
+              Card Title
+            </Text>
+          </Card.Content>
+        </Card>
+        <Card elevation={2} mode="elevated" style={styles.card}>
+          <Card.Content>
+            <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+          </Card.Content>
+        </Card>
+        <Card elevation={2} mode="elevated" style={styles.card}>
+          <Card.Content>
+            <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+          </Card.Content>
+        </Card>
+        <Card elevation={2} mode="elevated" style={styles.card}>
+          <Card.Content>
             <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
           </Card.Content>
         </Card>
@@ -44,5 +65,13 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: '#fff',
+    position: 'relative',
+    marginVertical: 10,
+  },
+  cardText: {
+    position: 'absolute',
+  },
+  cardImage: {
+    backgroundColor: '#000',
   },
 })
