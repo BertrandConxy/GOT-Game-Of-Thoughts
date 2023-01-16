@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
-import { Badge, Button } from 'react-native-paper'
+import { Badge, Button, ProgressBar, MD3Colors } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
 import questions from '../../../services/quiz/mock/questions'
 
@@ -98,14 +98,7 @@ const QuizScreen = ({ navigation }) => {
         </Text>
       </View>
       {/* Progress bar */}
-      <View style={styles.bar}>
-        <Text
-          style={{
-            width: `${progressPercentage}%`,
-            ...styles.barProgress,
-          }}
-        ></Text>
-      </View>
+      <ProgressBar progress={progressPercentage} color="#666AF6" />
       <View style={styles.questionContainer}>
         <Text style={styles.question}>{question}</Text>
         <ScrollView>

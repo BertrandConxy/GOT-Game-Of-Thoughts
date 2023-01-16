@@ -8,7 +8,7 @@ const HomeScreen = () => {
     <SafeArea>
       <View style={styles.topBar}>
         <Text style={styles.brand}>GOT</Text>
-        <Icon name="bell" size={25} color="#005D0C" />
+        <Icon name="bell" size={25} color="#fff" />
       </View>
     </SafeArea>
   )
@@ -28,5 +28,6 @@ const styles = StyleSheet.create({
   brand: {
     fontSize: 30,
     fontWeight: 'bold',
+    color: '#fff',
   },
 })
