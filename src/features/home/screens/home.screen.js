@@ -1,8 +1,8 @@
 import React from 'react'
-import { StyleSheet, View, ScrollView, ImageBackground } from 'react-native'
+import { StyleSheet, View, ScrollView } from 'react-native'
 import { SafeArea } from '../../../utils/safe-area.components'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { options } from '../../../utils/options'
+import { options } from '../components/options'
 import OptionCard from '../components/option-card.component'
 import { Text } from 'react-native-paper'
 
@@ -14,8 +14,12 @@ const HomeScreen = () => {
         <Icon name="bell" size={25} color="#fff" />
       </View>
       <ScrollView style={styles.cardView}>
-        {options.map((option) => (
-          <OptionCard imageCover={option.imageCover} option={option.option} />
+        {options.map((option, i) => (
+          <OptionCard
+            key={i}
+            imageCover={option.imageCover}
+            option={option.option}
+          />
         ))}
       </ScrollView>
     </SafeArea>
