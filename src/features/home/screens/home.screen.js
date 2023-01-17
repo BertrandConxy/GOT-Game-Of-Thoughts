@@ -2,7 +2,9 @@ import React from 'react'
 import { StyleSheet, View, ScrollView, ImageBackground } from 'react-native'
 import { SafeArea } from '../../../utils/safe-area.components'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Card, Text } from 'react-native-paper'
+import { options } from '../../../utils/options'
+import OptionCard from '../components/option-card.component'
+import { Text } from 'react-native-paper'
 
 const HomeScreen = () => {
   return (
@@ -12,78 +14,9 @@ const HomeScreen = () => {
         <Icon name="bell" size={25} color="#fff" />
       </View>
       <ScrollView style={styles.cardView}>
-        <Card elevation={2} mode="elevated" style={styles.card}>
-          <Card.Content style={styles.cardContent}>
-            <ImageBackground
-              source={{ uri: 'https://picsum.photos/700' }}
-              style={{
-                width: 340,
-                height: 200,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <View style={styles.imageCover} />
-              <Text style={styles.cardText} variant="titleLarge">
-                Card Title
-              </Text>
-            </ImageBackground>
-          </Card.Content>
-        </Card>
-        <Card elevation={2} mode="elevated" style={styles.card}>
-          <Card.Content style={styles.cardContent}>
-            <ImageBackground
-              source={{ uri: 'https://picsum.photos/700' }}
-              style={{
-                width: 340,
-                height: 200,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <View style={styles.imageCover} />
-              <Text style={styles.cardText} variant="titleLarge">
-                Card Title
-              </Text>
-            </ImageBackground>
-          </Card.Content>
-        </Card>
-        <Card elevation={2} mode="elevated" style={styles.card}>
-          <Card.Content style={styles.cardContent}>
-            <ImageBackground
-              source={{ uri: 'https://picsum.photos/700' }}
-              style={{
-                width: 340,
-                height: 200,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <View style={styles.imageCover} />
-              <Text style={styles.cardText} variant="titleLarge">
-                Card Title
-              </Text>
-            </ImageBackground>
-          </Card.Content>
-        </Card>
-        <Card elevation={2} mode="elevated" style={styles.card}>
-          <Card.Content style={styles.cardContent}>
-            <ImageBackground
-              source={{ uri: 'https://picsum.photos/700' }}
-              style={{
-                width: 340,
-                height: 200,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <View style={styles.imageCover} />
-              <Text style={styles.cardText} variant="titleLarge">
-                Card Title
-              </Text>
-            </ImageBackground>
-          </Card.Content>
-        </Card>
+        {options.map((option) => (
+          <OptionCard imageCover={option.imageCover} option={option.option} />
+        ))}
       </ScrollView>
     </SafeArea>
   )
