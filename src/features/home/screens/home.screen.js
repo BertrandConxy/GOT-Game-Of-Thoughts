@@ -1,5 +1,11 @@
 import React from 'react'
-import { StyleSheet, View, ScrollView } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  Image,
+  ImageBackground,
+} from 'react-native'
 import { SafeArea } from '../../../utils/safe-area.components'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Card, Text } from 'react-native-paper'
@@ -23,6 +29,22 @@ const HomeScreen = () => {
             </Text>
           </Card.Content>
         </Card>
+        <View>
+          <ImageBackground
+            source={{ uri: 'https://picsum.photos/700' }}
+            style={{
+              width: 400,
+              height: 200,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <View style={styles.imageCover}></View>
+            <Text style={styles.cardText} variant="titleLarge">
+              Card Title
+            </Text>
+          </ImageBackground>
+        </View>
         <Card elevation={2} mode="elevated" style={styles.card}>
           <Card.Content>
             <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
@@ -69,9 +91,17 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   cardText: {
-    position: 'absolute',
+    color: '#fff',
   },
   cardImage: {
     backgroundColor: '#000',
+  },
+  imageCover: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
   },
 })
