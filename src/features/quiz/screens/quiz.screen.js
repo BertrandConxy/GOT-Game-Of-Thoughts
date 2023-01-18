@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-} from 'react-native'
+import { ScrollView, StyleSheet, View, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
 import { Badge, Button, ProgressBar } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
+import { Text } from '../../../components/typography/text.component'
+import { Spacer } from '../../../components/spacer/spacer.component'
+import { TopContainer } from '../components/quiz.styles'
 import questions from '../../../services/quiz/mock/questions'
 
 const QuizScreen = ({ navigation }) => {
@@ -85,18 +82,18 @@ const QuizScreen = ({ navigation }) => {
 
   return (
     <SafeArea>
-      <View style={[styles.flexRow, styles.spaceBtn]}>
+      <TopContainer>
         <Text style={styles.heading}>Quiz Challenge 1</Text>
         <Badge size={45} style={styles.badge}>
           {counter}
         </Badge>
-      </View>
-      <View style={[styles.flexRow, styles.spaceBtn]}>
+      </TopContainer>
+      <TopContainer>
         <Text style={styles.subHeading}>Your Progress</Text>
         <Text>
           ({index}/{questions.length}) questions answered
         </Text>
-      </View>
+      </TopContainer>
       {/* Progress bar */}
       <ProgressBar progress={progressPercentage} color="#666AF6" />
       <View style={styles.questionContainer}>
