@@ -5,6 +5,7 @@ import { Badge, Button, ProgressBar } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
 import { Text } from '../../../components/typography/text.component'
 import { Spacer } from '../../../components/spacer/spacer.component'
+import { theme } from '../../../infrastructure/theme'
 import { TopContainer } from '../components/quiz.styles'
 import questions from '../../../services/quiz/mock/questions'
 
@@ -83,19 +84,22 @@ const QuizScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <TopContainer>
-        <Text style={styles.heading}>Quiz Challenge 1</Text>
+        <Text variant="titleBrand">Quiz Challenge 1</Text>
         <Badge size={45} style={styles.badge}>
           {counter}
         </Badge>
       </TopContainer>
       <TopContainer>
-        <Text style={styles.subHeading}>Your Progress</Text>
+        <Text>Your Progress</Text>
         <Text>
           ({index}/{questions.length}) questions answered
         </Text>
       </TopContainer>
       {/* Progress bar */}
-      <ProgressBar progress={progressPercentage} color="#666AF6" />
+      <ProgressBar
+        progress={progressPercentage}
+        color={theme.colors.bg.primary}
+      />
       <View style={styles.questionContainer}>
         <Text style={styles.question}>{question}</Text>
         <ScrollView>
