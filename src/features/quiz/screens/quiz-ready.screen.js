@@ -1,5 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native'
+import { Text } from '../../../components/typography/text.component'
+import { Spacer } from '../../../components/spacer/spacer.component'
 import { Button } from 'react-native-paper'
 import styled from 'styled-components/native'
 
@@ -19,24 +21,20 @@ const QuizReadyScreen = ({ navigation }) => {
         source={require('../../../../assets/ready-1.png')}
         style={styles.illustrator}
       />
-
-      <View style={styles.headerView}>
-        <Text style={styles.headerText}>Quiz Rules</Text>
-      </View>
+      <Spacer position="top" size="medium" />
+      <Text variant="title">Quiz Rules</Text>
+      <Spacer position="bottom" size="medium" />
       <View style={styles.listContainer}>
-        <Text style={styles.listItem}>
+        <Text variant="title">
           {' '}
           * For each correct answer you get 5 points{' '}
         </Text>
-        <Text style={styles.listItem}>
+        <Text variant="title">
           {' '}
           * There is no negative marking for the wrong answer{' '}
         </Text>
-        <Text style={styles.listItem}>
-          {' '}
-          * Each question has a time of 15 seconds{' '}
-        </Text>
-        <Text style={styles.listItem}> * All questions are compulsory </Text>
+        <Text variant="title"> * Each question has a time of 15 seconds </Text>
+        <Text variant="title"> * All questions are compulsory </Text>
       </View>
       <TouchableOpacity onPress={() => navigation.navigate('Quiz')}>
         <Button icon="flag-checkered" mode="contained" buttonColor="#666AF6">
@@ -50,9 +48,6 @@ const QuizReadyScreen = ({ navigation }) => {
 export default QuizReadyScreen
 
 const styles = StyleSheet.create({
-  readyView: {
-    alignItems: 'center',
-  },
   illustrator: {
     width: '100%',
     height: '60%',
