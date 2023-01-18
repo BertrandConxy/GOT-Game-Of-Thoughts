@@ -7,3 +7,10 @@ export const TopContainer = styled.View`
   margin-top: ${(props) => props.theme.space[2]};
   margin-bottom: ${(props) => props.theme.space[2]};
 `
+
+export const QuestionContainer = styled.View`
+  margin-top: ${(props) => props.theme.space[4]};
+  background-color: ${(props) => props.theme.colors.bg.tertiary};
+  padding: ${(props) => props.theme.space[2]};
+  border-radius: ${(props) => props.theme.sizes[0]};
+`

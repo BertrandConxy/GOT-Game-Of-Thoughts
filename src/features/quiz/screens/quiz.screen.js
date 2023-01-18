@@ -6,7 +6,7 @@ import { SafeArea } from '../../../utils/safe-area.components'
 import { Text } from '../../../components/typography/text.component'
 import { Spacer } from '../../../components/spacer/spacer.component'
 import { theme } from '../../../infrastructure/theme'
-import { TopContainer } from '../components/quiz.styles'
+import { TopContainer, QuestionContainer } from '../components/quiz.styles'
 import questions from '../../../services/quiz/mock/questions'
 
 const QuizScreen = ({ navigation }) => {
@@ -100,8 +100,8 @@ const QuizScreen = ({ navigation }) => {
         progress={progressPercentage}
         color={theme.colors.bg.primary}
       />
-      <View style={styles.questionContainer}>
-        <Text style={styles.question}>{question}</Text>
+      <QuestionContainer>
+        <Text variant="title">{question}</Text>
         <ScrollView>
           {options.map((opt) => (
             <TouchableOpacity
@@ -136,7 +136,7 @@ const QuizScreen = ({ navigation }) => {
             </TouchableOpacity>
           ))}
         </ScrollView>
-      </View>
+      </QuestionContainer>
       <View style={answerStatus === null ? null : styles.answerStatusView}>
         {answerStatus === null ? null : (
           <Text style={answerStatus == null ? null : styles.answerStatus}>
@@ -182,14 +182,6 @@ const QuizScreen = ({ navigation }) => {
 export default QuizScreen
 
 const styles = StyleSheet.create({
-  flexRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 5,
-  },
-  spaceBtn: {
-    justifyContent: 'space-between',
-  },
   heading: {
     fontWeight: 'bold',
     fontSize: 18,
@@ -206,12 +198,6 @@ const styles = StyleSheet.create({
   },
   badge: {
     backgroundColor: '#666AF6',
-  },
-  questionContainer: {
-    marginTop: 20,
-    backgroundColor: '#F0F8FF',
-    padding: 10,
-    borderRadius: 6,
   },
   rounded: {
     width: 40,
