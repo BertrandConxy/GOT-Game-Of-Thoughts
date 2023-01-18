@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, View } from 'react-native'
 import { ThemeProvider } from 'styled-components/native'
+import styled from 'styled-components/native'
 import Navigation from './src/infrastructure/navigation'
 import { theme } from './src/infrastructure/theme'
 import {
@@ -20,17 +20,17 @@ export default function App() {
   if (!OswaldLoaded || !LatoLoaded) {
     return null
   }
+
+  const AppView = styled.View`
+    flex: 1;
+    background-color: '#fff';
+  `
   return (
-    <View style={styles.container}>
-      <Navigation />
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider theme={theme}>
+      <AppView>
+        <Navigation />
+        <StatusBar style="auto" />
+      </AppView>
+    </ThemeProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-})
