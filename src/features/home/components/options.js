@@ -12,7 +12,7 @@ export const options = [
     imageCover: require('../../../../assets/contests-vector.jpg'),
   },
   {
-    option: 'Survey',
+    option: 'Surveys',
     imageCover: require('../../../../assets/survey-vector.jpg'),
   },
 ]

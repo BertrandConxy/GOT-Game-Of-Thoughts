@@ -28,36 +28,14 @@ const OptionCard = ({ imageCover, option }) => {
 export default OptionCard
 
 const styles = StyleSheet.create({
-  topBar: {
-    backgroundColor: '#666AF6',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-  },
-  brand: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#fff',
-  },
-  cardView: {
-    marginVertical: 20,
-    marginBottom: 70,
-    paddingHorizontal: 10,
-  },
   card: {
     backgroundColor: '#fff',
-    position: 'relative',
     marginVertical: 10,
   },
   cardText: {
     color: '#fff',
     fontSize: 25,
     fontWeight: 'bold',
-  },
-  cardImage: {
-    backgroundColor: '#000',
   },
   imageCover: {
     position: 'absolute',
@@ -66,10 +44,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 10,
+    overflow: 'hidden',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
-  },
-  imageCard: {},
-  cardContent: {
-    borderRadius: 10,
   },
 })

@@ -1,12 +1,12 @@
 import React from 'react'
-import { StyleSheet, View, ScrollView } from 'react-native'
+import { StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native'
 import { SafeArea } from '../../../utils/safe-area.components'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { options } from '../components/options'
 import OptionCard from '../components/option-card.component'
 import { Text } from 'react-native-paper'
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <View style={styles.topBar}>
@@ -15,11 +15,12 @@ const HomeScreen = () => {
       </View>
       <ScrollView style={styles.cardView}>
         {options.map((option, i) => (
-          <OptionCard
+          <TouchableOpacity
             key={i}
-            imageCover={option.imageCover}
-            option={option.option}
-          />
+            onPress={() => navigation.navigate('QuizReady')}
+          >
+            <OptionCard imageCover={option.imageCover} option={option.option} />
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </SafeArea>
@@ -46,29 +47,5 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     marginBottom: 70,
     paddingHorizontal: 10,
-  },
-  card: {
-    backgroundColor: '#fff',
-    position: 'relative',
-    marginVertical: 10,
-  },
-  cardText: {
-    color: '#fff',
-  },
-  cardImage: {
-    backgroundColor: '#000',
-  },
-  imageCover: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    borderRadius: 10,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-  },
-  imageCard: {},
-  cardContent: {
-    borderRadius: 10,
   },
 })
