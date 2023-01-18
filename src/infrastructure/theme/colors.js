@@ -14,9 +14,9 @@ export const colors = {
     success: '#138000',
   },
   bg: {
-    primary: '#FFFFFF',
-    secondary: '#F1F1F1',
-    tertiary: '#666AF6',
+    primary: '#666AF6',
+    secondary: '#FFFFFF',
+    tertiary: '#F1F1F1',
   },
   text: {
     primary: '#262626',

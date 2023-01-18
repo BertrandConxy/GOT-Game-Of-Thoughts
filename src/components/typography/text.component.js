@@ -12,6 +12,10 @@ const defaultTextStyles = (theme) => `
 const body = (theme) => `
     font-size: ${theme.fontSizes.body};
 `
+const bodyWhite = (theme) => `
+    font-size: ${theme.fontSizes.body};
+    color: ${theme.colors.ui.quaternary}
+`
 
 const caption = (theme) => `
     font-size: ${theme.fontSizes.caption};
@@ -38,14 +42,21 @@ const title = (theme) => `
     font-size: ${theme.fontSizes.title};
     font-weight: ${theme.fontWeights.bold};
 `
+const titleBrand = (theme) => `
+    font-size: ${theme.fontSizes.title};
+    font-weight: ${theme.fontWeights.bold};
+    color: ${theme.colors.brand.primary}
+`
 
 const variants = {
   body,
+  bodyWhite,
   caption,
   error,
   hint,
   label,
   title,
+  titleBrand,
 }
 
 export const Text = styled(RNText)`
