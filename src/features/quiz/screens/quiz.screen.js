@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
-import { Badge, Button, ProgressBar, MD3Colors } from 'react-native-paper'
+import { Badge, Button, ProgressBar } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
 import questions from '../../../services/quiz/mock/questions'
 
@@ -31,7 +31,7 @@ const QuizScreen = ({ navigation }) => {
   let interval = null
 
   // Progress bar
-  const progressPercentage = Math.floor((index / questions.length) * 100)
+  const progressPercentage = index / questions.length
 
   // Pressing the correct answer option
   useEffect(() => {
