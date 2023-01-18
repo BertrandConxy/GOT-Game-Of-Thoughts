@@ -1,10 +1,20 @@
+import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { Button } from 'react-native-paper'
-import React from 'react'
+import styled from 'styled-components/native'
+
+const ReadyView = styled.View`
+  align-items: center;
+`
+// const ReadyView = styled.View`
+//   flex: 1;
+//   background-color: ${(props) => props.theme.colors.bg.primary};
+//   padding: ${(props) => props.theme.space[3]};
+// `
 
 const QuizReadyScreen = ({ navigation }) => {
   return (
-    <View style={styles.readyView}>
+    <ReadyView>
       <Image
         source={require('../../../../assets/ready-1.png')}
         style={styles.illustrator}
@@ -33,7 +43,7 @@ const QuizReadyScreen = ({ navigation }) => {
           Start Quiz
         </Button>
       </TouchableOpacity>
-    </View>
+    </ReadyView>
   )
 }
 

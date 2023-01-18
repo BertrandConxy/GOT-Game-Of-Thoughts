@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
-import { ThemeProvider } from 'styled-components/native'
-import styled from 'styled-components/native'
+import { ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 import Navigation from './src/infrastructure/navigation'
 import { theme } from './src/infrastructure/theme'
 import {
