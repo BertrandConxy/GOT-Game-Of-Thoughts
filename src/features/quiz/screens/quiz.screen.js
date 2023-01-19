@@ -6,7 +6,11 @@ import { SafeArea } from '../../../utils/safe-area.components'
 import { Text } from '../../../components/typography/text.component'
 import { Spacer } from '../../../components/spacer/spacer.component'
 import { theme } from '../../../infrastructure/theme'
-import { TopContainer, QuestionContainer } from '../components/quiz.styles'
+import {
+  TopContainer,
+  QuestionContainer,
+  QuestionBox,
+} from '../components/quiz.styles'
 import questions from '../../../services/quiz/mock/questions'
 
 const QuizScreen = ({ navigation }) => {
@@ -110,14 +114,14 @@ const QuizScreen = ({ navigation }) => {
                 selectedAnswerIndex === null && setSelectedAnswerIndex(opt.id)
               }}
             >
-              <View
+              <QuestionBox
                 style={
                   selectedAnswerIndex === opt.id && opt.id == correctAnswerIndex
-                    ? [styles.flexRow, styles.contentWrapper, styles.correct]
+                    ? [styles.correct]
                     : selectedAnswerIndex != null &&
                       selectedAnswerIndex == opt.id
-                    ? [styles.flexRow, styles.contentWrapper, styles.wrong]
-                    : [styles.flexRow, styles.contentWrapper]
+                    ? [styles.wrong]
+                    : null
                 }
               >
                 <Text style={styles.rounded}>
@@ -132,7 +136,7 @@ const QuizScreen = ({ navigation }) => {
                   )}
                 </Text>
                 <Text>{opt.answer}</Text>
-              </View>
+              </QuestionBox>
             </TouchableOpacity>
           ))}
         </ScrollView>
