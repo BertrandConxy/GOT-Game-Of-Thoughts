@@ -10,6 +10,7 @@ import {
   TopContainer,
   QuestionContainer,
   QuestionBox,
+  Rounded,
 } from '../components/quiz.styles'
 import questions from '../../../services/quiz/mock/questions'
 
@@ -124,7 +125,7 @@ const QuizScreen = ({ navigation }) => {
                     : null
                 }
               >
-                <Text style={styles.rounded}>
+                <Rounded>
                   {selectedAnswerIndex === opt.id &&
                   opt.id == correctAnswerIndex ? (
                     <Icon name="check" size={22} color="#005D0C" />
@@ -134,7 +135,7 @@ const QuizScreen = ({ navigation }) => {
                   ) : (
                     <Text>{opt.options}</Text>
                   )}
-                </Text>
+                </Rounded>
                 <Text>{opt.answer}</Text>
               </QuestionBox>
             </TouchableOpacity>

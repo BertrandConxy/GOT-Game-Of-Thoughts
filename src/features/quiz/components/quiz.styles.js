@@ -18,9 +18,20 @@ export const QuestionContainer = styled.View`
 export const QuestionBox = styled.View`
   flex-direction: row;
   align-items: center;
-  background-color: ${(props) => props.theme.colors.bg.tertiary};
+  border-color: #666af6;
   border-width: 1px;
   border-radius: 22px;
   margin-top: ${(props) => props.theme.space[3]};
   margin-bottom: ${(props) => props.theme.space[3]};
+`
+
+export const Rounded = styled.Text`
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #666af6;
+  padding: 7px;
+  text-align: center;
+  margin-right: 5px;
 `
