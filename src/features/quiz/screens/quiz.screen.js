@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView, StyleSheet, View, TouchableOpacity } from 'react-native'
+import { ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
-import { Badge, Button, ProgressBar } from 'react-native-paper'
+import { ProgressBar } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
 import { Text } from '../../../components/typography/text.component'
-import { Spacer } from '../../../components/spacer/spacer.component'
 import { theme } from '../../../infrastructure/theme'
 import {
   TopContainer,
   QuestionContainer,
   QuestionBox,
   Rounded,
+  AnswerStatusView,
+  NextButton,
+  TimerBg,
 } from '../components/quiz.styles'
 import questions from '../../../services/quiz/mock/questions'
 
@@ -90,9 +92,7 @@ const QuizScreen = ({ navigation }) => {
     <SafeArea>
       <TopContainer>
         <Text variant="titleBrand">Quiz Challenge 1</Text>
-        <Badge size={45} style={styles.badge}>
-          {counter}
-        </Badge>
+        <TimerBg size={45}>{counter}</TimerBg>
       </TopContainer>
       <TopContainer>
         <Text>Your Progress</Text>
@@ -128,10 +128,18 @@ const QuizScreen = ({ navigation }) => {
                 <Rounded>
                   {selectedAnswerIndex === opt.id &&
                   opt.id == correctAnswerIndex ? (
-                    <Icon name="check" size={22} color="#005D0C" />
+                    <Icon
+                      name="check"
+                      size={22}
+                      color={theme.colors.ui.success}
+                    />
                   ) : selectedAnswerIndex != null &&
                     selectedAnswerIndex == opt.id ? (
-                    <Icon name="cross" size={22} color="#F02E2E" />
+                    <Icon
+                      name="cross"
+                      size={22}
+                      color={theme.colors.ui.error}
+                    />
                   ) : (
                     <Text>{opt.options}</Text>
                   )}
@@ -142,44 +150,44 @@ const QuizScreen = ({ navigation }) => {
           ))}
         </ScrollView>
       </QuestionContainer>
-      <View style={answerStatus === null ? null : styles.answerStatusView}>
-        {answerStatus === null ? null : (
-          <Text style={answerStatus == null ? null : styles.answerStatus}>
-            {!!answerStatus ? 'Correct Answer' : 'Wrong Answer'}
-          </Text>
-        )}
+      {answerStatus === null ? null : (
+        <AnswerStatusView>
+          {answerStatus === null ? null : (
+            <Text variant="title" style={{ textAlign: 'center' }}>
+              {!!answerStatus ? 'Correct Answer' : 'Wrong Answer'}
+            </Text>
+          )}
 
-        {index + 1 >= questions.length ? (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('QuizResults', {
-                answers: answers,
-                points: points,
-              })
-            }
-          >
-            <Button
-              icon="check-decagram"
-              mode="contained"
-              style={styles.button}
-              buttonColor="#666AF6"
+          {index + 1 >= questions.length ? (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('QuizResults', {
+                  answers: answers,
+                  points: points,
+                })
+              }
             >
-              Done
-            </Button>
-          </TouchableOpacity>
-        ) : answerStatus === null ? null : (
-          <TouchableOpacity onPress={() => setIndex(index + 1)}>
-            <Button
-              mode="contained"
-              icon="skip-next"
-              style={styles.button}
-              buttonColor="#666AF6"
-            >
-              Next Question
-            </Button>
-          </TouchableOpacity>
-        )}
-      </View>
+              <NextButton
+                icon="check-decagram"
+                mode="contained"
+                buttonColor={theme.colors.bg.primary}
+              >
+                Done
+              </NextButton>
+            </TouchableOpacity>
+          ) : answerStatus === null ? null : (
+            <TouchableOpacity onPress={() => setIndex(index + 1)}>
+              <NextButton
+                mode="contained"
+                icon="skip-next"
+                buttonColor={theme.colors.bg.primary}
+              >
+                Next Question
+              </NextButton>
+            </TouchableOpacity>
+          )}
+        </AnswerStatusView>
+      )}
     </SafeArea>
   )
 }
@@ -187,82 +195,10 @@ const QuizScreen = ({ navigation }) => {
 export default QuizScreen
 
 const styles = StyleSheet.create({
-  heading: {
-    fontWeight: 'bold',
-    fontSize: 18,
-    color: '#666AF6',
-  },
-  question: {
-    fontWeight: 'bold',
-    fontSize: 18,
-    marginVertical: 5,
-  },
-  subHeading: {
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  badge: {
-    backgroundColor: '#666AF6',
-  },
-  rounded: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    padding: 10,
-    textAlign: 'center',
-    borderColor: '#666AF6',
-    borderWidth: 1,
-    marginRight: 5,
-  },
-  contentWrapper: {
-    borderWidth: 1,
-    borderColor: '#666AF6',
-    borderRadius: 22,
-    marginVertical: 10,
-  },
-
-  bar: {
-    marginVertical: 10,
-    backgroundColor: 'white',
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 10,
-    borderRadius: 20,
-    justifyContent: 'center',
-  },
-  barProgress: {
-    backgroundColor: '#666AF6',
-    borderRadius: 12,
-    position: 'absolute',
-    left: 0,
-    height: 10,
-    right: 0,
-    marginTop: 20,
-  },
   correct: {
     backgroundColor: '#7EF893',
   },
   wrong: {
     backgroundColor: '#F57D7D',
-  },
-  answerStatusView: {
-    marginTop: 45,
-    backgroundColor: '#F0F8FF',
-    padding: 10,
-    borderRadius: 7,
-    height: 120,
-  },
-  answerStatus: {
-    fontSize: 17,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-
-  button: {
-    padding: 1,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: 15,
   },
 })

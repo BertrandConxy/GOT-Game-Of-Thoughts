@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import { Button, Badge } from 'react-native-paper'
 
 export const TopContainer = styled.View`
   flex-direction: row;
@@ -34,4 +35,21 @@ export const Rounded = styled.Text`
   padding: 7px;
   text-align: center;
   margin-right: 5px;
+`
+export const AnswerStatusView = styled.View`
+  margin-top: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.tertiary};
+  padding: ${(props) => props.theme.space[2]};
+  border-radius: ${(props) => props.theme.sizes[0]};
+  height: ${(props) => props.theme.sizes[4]};
+`
+
+export const NextButton = styled(Button)`
+  padding: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: ${(props) => props.theme.space[3]};
+`
+export const TimerBg = styled(Badge)`
+  background-color: #666af6;
 `
