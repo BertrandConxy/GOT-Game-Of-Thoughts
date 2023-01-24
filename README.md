@@ -2,11 +2,11 @@
 
 <div align="center">
 
-  <img src="./src/assets/icon.png" alt="logo" width="140"  height="auto" />
+  <!-- <img src="./src/assets/icon.png" alt="logo" width="140"  height="auto" /> -->
   <br/>
 
-  <h3><b>E-Tuze Platform</b></h3>
-  <em>"Mental health at your fingertips"</em>
+  <h3><b>GOT(Game Of Thought)</b></h3>
+  <em>"Where everyone wants to be the GOAT(Greatest Of All Time)"</em>
 
 </div>
 
@@ -14,31 +14,31 @@
 
 # 📗 Table of Contents
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ](#faq)
-- [📝 License](#license)
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 \[GOT\] ](#-got-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [🚀 Quick Preview ](#-quick-preview-)
+  - [🚀 Live Demo ](#-live-demo-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [E-Tuze Platform] <a name="about-project"></a>
+# 📖 [GOT] <a name="about-project"></a>
 
-> This is the online platform that intends to provide mental health services and information about mental health to everyone in very easy and accessible manner.
+> A mobile application that bring fun at parties, at school, on date and everywhere where people feel bored. People meet up to answer general knowledge questions or solving riddles and whoever scores high scores becomes the GOAT(Greatest Of All Time).
+> A mobile application that bring fun at parties, at school, on date and everywhere where people feel bored. People meet up to answer general knowledge questions or solving riddles and whoever scores high scores becomes the GOAT(Greatest Of All Time).
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -48,11 +48,12 @@
   <summary>Client</summary>
   <ul>
     <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://reactnative.dev/">React Native</a></li>
   </ul>
 </details>
 
 <details>
-<summary>Database</summary>
+<summary>Backend & Database</summary>
   <ul>
     <li><a href="https://www.firebase.com/">Firebase</a></li>
   </ul>
@@ -62,10 +63,16 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Initial Diagnosis**
-- **Personalized recommendation**
-- **Getting matched with licensed therapist**
-- **Video call and chat**
+- **Global Dashboard**
+- **Battle & Become the GOAT**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Quick Preview -->
+
+## 🚀 Quick Preview <a name="quick-preview"></a>
+
+  <img src="./assets/GOT-home.PNG" alt="preview" width="300"  height="auto" />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -73,7 +80,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [E-Tuze](https://e-tuze.netlify.app)
+- Not yet Deployed
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -95,7 +102,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd your-folder
-  git clone https://github.com/mugishasam123/E-tuze.git
+  git clone https://github.com/BertrandConxy/GOT-Game-Of-Thoughts.git
 ```
 
 ### Install
@@ -103,7 +110,7 @@ Clone this repository to your desired folder:
 Install this project with:
 
 ```sh
-  cd E-tuze
+  cd GOT-Game-Of-Thoughts
   npm install
 ```
 
@@ -112,7 +119,7 @@ Install this project with:
 To run the project, execute the following command:
 
 ```sh
-  npm run dev
+  npm start
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -127,20 +134,14 @@ To run the project, execute the following command:
 - Twitter: [@Bconxy](https://twitter.com/BertrandMutanga)
 - LinkedIn: [Bertrand Mutangana Ishimwe](https://www.linkedin.com/in/bertrandmutangana)
 
-👤 **Mugisha Samuel**
-
-- GitHub: [@mugishasamuel](https://github.com/mugishasam123)
-- Twitter: [@mugishsamuel](https://twitter.com/mugishasamuel42/)
-- LinkedIn: [mugishasamuel](https://www.linkedin.com/in/mugisha-samuel-55a905208/)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **Advanced Analytics**
-- **Switching between Therapists**
+- **Attend GK Contests**
+- **Participate in Surveys**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -150,7 +151,7 @@ To run the project, execute the following command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/mugishasam123/E-tuze/issues).
+Feel free to check the [issues page](https://github.com/BertrandConxy/GOT-Game-Of-Thoughts/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -166,7 +167,7 @@ If you like this project please don't hesitate to reach out to us because we nee
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-We would like to thank everyone who helped us finalize this idea! especially [Imbuto Foundation Initiative](https://www.imbutofoundation.org/iaccelerator/)
+We would like to thank everyone who helped us finalize this project idea and everyone who will be participating in its testing.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
