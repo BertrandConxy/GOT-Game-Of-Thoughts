@@ -41,7 +41,7 @@ const QuizReadyScreen = ({ navigation }) => {
         </Text>
         <Text variant="bodyWhite"> * All questions are compulsory </Text>
       </RulesContainer>
-      <TouchableOpacity onPress={() => navigation.navigate('Quiz')}>
+      <TouchableOpacity onPress={() => navigation.navigate('QuizRunning')}>
         <Button
           icon="flag-checkered"
           mode="contained"

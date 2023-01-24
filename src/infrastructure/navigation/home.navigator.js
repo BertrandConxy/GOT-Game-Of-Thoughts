@@ -13,7 +13,7 @@ const HomeNavigator = () => {
       }}
     >
       <HomeStack.Screen
-        name="Home"
+        name="HomeScreen"
         component={HomeScreen}
         options={{ contentStyle: { paddingHorizontal: 0 } }}
       />
