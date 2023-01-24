@@ -1,11 +1,54 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Text } from 'react-native-paper'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { theme } from '../theme'
+import { SafeArea } from '../../utils/safe-area.components'
+import HomeNavigator from './home.navigator'
 import QuizNavigator from './quiz.navigator'
 
+const BattleScreen = () => {
+  return (
+    <SafeArea>
+      <Text>BattleScreen</Text>
+    </SafeArea>
+  )
+}
+const ProfileScreen = () => {
+  return (
+    <SafeArea>
+      <Text>ProfileScreen</Text>
+    </SafeArea>
+  )
+}
+
+const ICON_NAME = {
+  Home: 'home',
+  Quiz: 'google-controller',
+  Battle: 'sword-cross',
+  Profile: 'account',
+}
+
+const screenOptions = ({ route }) => {
+  const iconName = ICON_NAME[route.name]
+  return {
+    tabBarIcon: ({ color }) => <Icon name={iconName} size={30} color={color} />,
+    tabBarShowLabel: false,
+    headerShown: false,
+    tabBarActiveTintColor: theme.colors.bg.primary,
+  }
+}
+
 const AppNavigator = () => {
-  return <QuizNavigator />
+  const Tab = createBottomTabNavigator()
+  return (
+    <Tab.Navigator screenOptions={screenOptions}>
+      <Tab.Screen name="Home" component={HomeNavigator} />
+      <Tab.Screen name="Quiz" component={QuizNavigator} />
+      <Tab.Screen name="Battle" component={BattleScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+    </Tab.Navigator>
+  )
 }
 
 export default AppNavigator
-
-const styles = StyleSheet.create({})

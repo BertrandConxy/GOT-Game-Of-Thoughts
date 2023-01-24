@@ -1,70 +1,65 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import { Button } from 'react-native-paper'
 import React from 'react'
+import { StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { Button } from 'react-native-paper'
+import styled from 'styled-components/native'
+import { theme } from '../../../infrastructure/theme'
+import { Text } from '../../../components/typography/text.component'
+import { Spacer } from '../../../components/spacer/spacer.component'
+
+const ReadyView = styled.View`
+  align-items: center;
+`
+const RulesContainer = styled.View`
+  background-color: ${(props) => props.theme.colors.bg.primary};
+  padding: ${(props) => props.theme.space[3]};
+  margin: ${(props) => props.theme.space[3]};
+  border-radius: ${(props) => props.theme.sizes[0]};
+`
 
 const QuizReadyScreen = ({ navigation }) => {
   return (
-    <View style={styles.readyView}>
+    <ReadyView>
       <Image
         source={require('../../../../assets/ready-1.png')}
         style={styles.illustrator}
       />
-
-      <View style={styles.headerView}>
-        <Text style={styles.headerText}>Quiz Rules</Text>
-      </View>
-      <View style={styles.listContainer}>
-        <Text style={styles.listItem}>
+      <Spacer position="top" size="medium" />
+      <Text variant="titleBrand">Quiz Rules</Text>
+      <Spacer position="bottom" size="small" />
+      <RulesContainer>
+        <Text variant="bodyWhite">
           {' '}
           * For each correct answer you get 5 points{' '}
         </Text>
-        <Text style={styles.listItem}>
+        <Text variant="bodyWhite">
           {' '}
           * There is no negative marking for the wrong answer{' '}
         </Text>
-        <Text style={styles.listItem}>
+        <Text variant="bodyWhite">
           {' '}
           * Each question has a time of 15 seconds{' '}
         </Text>
-        <Text style={styles.listItem}> * All questions are compulsory </Text>
-      </View>
-      <TouchableOpacity onPress={() => navigation.navigate('Quiz')}>
-        <Button icon="flag-checkered" mode="contained" buttonColor="#666AF6">
+        <Text variant="bodyWhite"> * All questions are compulsory </Text>
+      </RulesContainer>
+      <TouchableOpacity onPress={() => navigation.navigate('QuizRunning')}>
+        <Button
+          icon="flag-checkered"
+          mode="contained"
+          buttonColor={theme.colors.bg.primary}
+        >
           Start Quiz
         </Button>
       </TouchableOpacity>
-    </View>
+    </ReadyView>
   )
 }
 
 export default QuizReadyScreen
 
 const styles = StyleSheet.create({
-  readyView: {
-    alignItems: 'center',
-  },
   illustrator: {
     width: '100%',
     height: '60%',
     resizeMode: 'contain',
-  },
-  headerView: {
-    padding: 10,
-  },
-  headerText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#666AF6',
-  },
-  listContainer: {
-    padding: 10,
-    margin: 10,
-    marginBottom: 30,
-    borderRadius: 5,
-    backgroundColor: '#666AF6',
-  },
-  listItem: {
-    marginBottom: 5,
-    color: '#fff',
   },
 })
