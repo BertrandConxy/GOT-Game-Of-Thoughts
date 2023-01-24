@@ -15,14 +15,14 @@ const QuizNavigator = () => {
         contentStyle: { paddingHorizontal: 10 },
       }}
     >
-      <QuizStack.Screen name="QuizReady" component={QuizReadyScreen} />
-      <QuizStack.Screen name="Quiz" component={QuizScreen} />
-      <QuizStack.Screen name="QuizResults" component={ResultScreen} />
       <QuizStack.Screen
         name="Home"
         component={HomeScreen}
         options={{ contentStyle: { paddingHorizontal: 0 } }}
       />
+      <QuizStack.Screen name="QuizReady" component={QuizReadyScreen} />
+      <QuizStack.Screen name="Quiz" component={QuizScreen} />
+      <QuizStack.Screen name="QuizResults" component={ResultScreen} />
     </QuizStack.Navigator>
   )
 }
