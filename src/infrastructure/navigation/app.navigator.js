@@ -3,14 +3,23 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Text } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { theme } from '../theme'
+import { SafeArea } from '../../utils/safe-area.components'
 import HomeNavigator from './home.navigator'
 import QuizNavigator from './quiz.navigator'
 
 const BattleScreen = () => {
-  return <Text>BattleScreen</Text>
+  return (
+    <SafeArea>
+      <Text>BattleScreen</Text>
+    </SafeArea>
+  )
 }
 const ProfileScreen = () => {
-  return <Text>ProfileScreen</Text>
+  return (
+    <SafeArea>
+      <Text>ProfileScreen</Text>
+    </SafeArea>
+  )
 }
 
 const ICON_NAME = {
