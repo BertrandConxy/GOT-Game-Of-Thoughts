@@ -1,17 +1,22 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Text } from 'react-native'
 import CategoryCard from '../components/category-card.component'
 import { SafeArea } from '../../../utils/safe-area.components'
+import { ScrollContainer } from '../../../components/scroll-view/scroll-view.component'
 
 const CategoriesScreen = () => {
   return (
     <SafeArea>
-      <Text>CategoriesScreen</Text>
-      <CategoryCard />
+      <ScrollContainer>
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+      </ScrollContainer>
     </SafeArea>
   )
 }
 
 export default CategoriesScreen
-
-const styles = StyleSheet.create({})

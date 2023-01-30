@@ -1,14 +1,25 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import styled from 'styled-components/native'
+
+const Card = styled.View`
+  background-color: #000;
+  height: 25%;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+`
+const CardText = styled.Text`
+  color: #fff;
+  font-size: 14px;
+`
 
 const CategoryCard = () => {
   return (
-    <View>
-      <Text>CategoryCard</Text>
-    </View>
+    <Card>
+      <CardText>CategoryCard</CardText>
+    </Card>
   )
 }
 
 export default CategoryCard
-
-const styles = StyleSheet.create({})
