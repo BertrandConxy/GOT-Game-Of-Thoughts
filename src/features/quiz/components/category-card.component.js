@@ -15,10 +15,10 @@ const CardText = styled.Text`
   font-size: 14px;
 `
 
-const CategoryCard = () => {
+const CategoryCard = ({ backgroundColor, name }) => {
   return (
     <Card>
-      <CardText>CategoryCard</CardText>
+      <CardText>{name}</CardText>
     </Card>
   )
 }
