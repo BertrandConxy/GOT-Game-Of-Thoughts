@@ -3,9 +3,7 @@ import styled from 'styled-components/native'
 
 export const ScrollContainer = styled(ScrollView).attrs({
   contentContainerStyle: {
-    flexGrow: 1,
     marginTop: 5,
-    height: 600,
   },
 })``
 

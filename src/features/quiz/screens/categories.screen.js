@@ -16,6 +16,12 @@ const CategoriesScreen = () => {
         <CategoryCard />
         <CategoryCard />
         <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
       </ScrollContainer>
     </Wrapper>
   )
