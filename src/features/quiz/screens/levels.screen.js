@@ -10,18 +10,17 @@ const Wrapper = styled(SafeArea)`
   flex: 1;
 `
 
-const CategoriesScreen = ({ navigation }) => {
+const LevelsScreen = ({ route, navigation }) => {
+  const { levels } = route.params
   return (
     <Wrapper>
       <ScrollContainer>
-        {categories.map((category) => (
+        {levels.map((lev) => (
           <TouchableOpacity
-            key={category.id}
-            onPress={() =>
-              navigation.navigate('CategoryLevels', categories[category.id - 1])
-            }
+            key={lev.id}
+            onPress={() => navigation.navigate('QuizReady')}
           >
-            <CategoryCard name={category.name} height={140} />
+            <CategoryCard name={lev.level} height={70} />
           </TouchableOpacity>
         ))}
       </ScrollContainer>
@@ -29,4 +28,4 @@ const CategoriesScreen = ({ navigation }) => {
   )
 }
 
-export default CategoriesScreen
+export default LevelsScreen

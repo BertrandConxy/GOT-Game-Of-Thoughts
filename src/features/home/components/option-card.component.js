@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   cardText: {
     color: '#fff',
-    fontSize: 25,
+    fontSize: 27,
     fontWeight: 'bold',
   },
   imageCover: {

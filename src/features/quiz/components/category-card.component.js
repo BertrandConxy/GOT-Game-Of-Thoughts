@@ -8,12 +8,12 @@ const Card = styled.View`
   align-items: center;
   justify-content: center;
   margin: 10px;
-  height: 140px;
+  height: ${(props) => props.height}px;
 `
 
-const CategoryCard = ({ name }) => {
+const CategoryCard = ({ height, name }) => {
   return (
-    <Card>
+    <Card height={height}>
       <Text variant="titleWhite">{name}</Text>
     </Card>
   )
