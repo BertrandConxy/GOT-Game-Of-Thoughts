@@ -1,25 +1,26 @@
 import React from 'react'
-import CategoryCard from '../components/category-card.component'
 import styled from 'styled-components'
+import { TouchableOpacity } from 'react-native'
 import { categories } from '../../../services/quiz/categories/categories'
 import { SafeArea } from '../../../utils/safe-area.components'
+import CategoryCard from '../components/category-card.component'
 import { ScrollContainer } from '../../../components/scroll-view/scroll-view.component'
 
 const Wrapper = styled(SafeArea)`
   flex: 1;
 `
 
-const CategoriesScreen = () => {
-  console.log(categories)
+const CategoriesScreen = ({ navigation }) => {
   return (
     <Wrapper>
       <ScrollContainer>
         {categories.map((category) => (
-          <CategoryCard
+          <TouchableOpacity
             key={category.id}
-            name={category.name}
-            backgroundColor={category.color}
-          />
+            onPress={() => navigation.navigate('QuizReady')}
+          >
+            <CategoryCard name={category.name} />
+          </TouchableOpacity>
         ))}
       </ScrollContainer>
     </Wrapper>

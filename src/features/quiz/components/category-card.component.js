@@ -1,24 +1,20 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { View } from 'react-native'
+import { Text } from '../../../components/typography/text.component'
 
 const Card = styled.View`
-  background-color: #000;
-  border-radius: 10px;
+  background-color: ${(props) => props.theme.colors.bg.quaternary};
+  border-radius: 15px;
   align-items: center;
   justify-content: center;
   margin: 10px;
   height: 140px;
 `
-const CardText = styled.Text`
-  color: #fff;
-  font-size: 14px;
-`
 
-const CategoryCard = ({ backgroundColor, name }) => {
+const CategoryCard = ({ name }) => {
   return (
     <Card>
-      <CardText>{name}</CardText>
+      <Text variant="titleWhite">{name}</Text>
     </Card>
   )
 }

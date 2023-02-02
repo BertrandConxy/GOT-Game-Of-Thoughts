@@ -42,6 +42,11 @@ const title = (theme) => `
     font-size: ${theme.fontSizes.title};
     font-weight: ${theme.fontWeights.bold};
 `
+const titleWhite = (theme) => `
+    font-size: ${theme.fontSizes.title};
+    font-weight: ${theme.fontWeights.bold};
+    color: ${theme.colors.text.inverse}
+`
 const titleBrand = (theme) => `
     font-size: ${theme.fontSizes.title};
     font-weight: ${theme.fontWeights.bold};
@@ -57,6 +62,7 @@ const variants = {
   label,
   title,
   titleBrand,
+  titleWhite,
 }
 
 export const Text = styled(RNText)`
