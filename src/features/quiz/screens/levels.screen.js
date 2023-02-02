@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { TouchableOpacity } from 'react-native'
-import { categories } from '../../../services/quiz/categories/categories'
 import { SafeArea } from '../../../utils/safe-area.components'
 import CategoryCard from '../components/category-card.component'
 import { ScrollContainer } from '../../../components/scroll-view/scroll-view.component'
