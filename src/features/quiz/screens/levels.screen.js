@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { TouchableOpacity } from 'react-native'
 import { SafeArea } from '../../../utils/safe-area.components'
 import CategoryCard from '../components/category-card.component'
+import LevelButton from '../components/level-button.component'
 import { ScrollContainer } from '../../../components/scroll-view/scroll-view.component'
 
 const Wrapper = styled(SafeArea)`
@@ -19,7 +20,7 @@ const LevelsScreen = ({ route, navigation }) => {
             key={lev.id}
             onPress={() => navigation.navigate('QuizReady')}
           >
-            <CategoryCard name={lev.level} status={lev.status} height={70} />
+            <LevelButton name={lev.level} />
           </TouchableOpacity>
         ))}
       </ScrollContainer>

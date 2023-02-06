@@ -16,9 +16,9 @@ const Card = styled.View`
 const CategoryCard = ({ height, name, status = null }) => {
   return (
     <Card height={height}>
-      <Text variant="titleWhite">Level {name}</Text>
+      <Text variant="titleWhite">{name}</Text>
       {status && status === 'closed' && (
-        <Icon name="lock" size={40} color="#fff" style={{ marginLeft: 10 }} />
+        <Icon name="lock" size={35} color="#fff" style={{ marginLeft: 10 }} />
       )}
     </Card>
   )
