@@ -19,7 +19,7 @@ const LevelsScreen = ({ route, navigation }) => {
             key={lev.id}
             onPress={() => navigation.navigate('QuizReady')}
           >
-            <CategoryCard name={lev.level} height={70} />
+            <CategoryCard name={lev.level} status={lev.status} height={70} />
           </TouchableOpacity>
         ))}
       </ScrollContainer>
