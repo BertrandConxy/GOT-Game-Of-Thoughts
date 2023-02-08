@@ -5,7 +5,6 @@ const defaultTextStyles = (theme) => `
     font-family: ${theme.fonts.body};
     font-weight: ${theme.fontWeights.regular};
     flex-wrap: wrap;
-    margin-top: 0px;
     margin-bottom: 0px;
 `
 
@@ -42,6 +41,11 @@ const title = (theme) => `
     font-size: ${theme.fontSizes.title};
     font-weight: ${theme.fontWeights.bold};
 `
+const titleWhite = (theme) => `
+    font-size: 26px;
+    font-weight: ${theme.fontWeights.bold};
+    color: ${theme.colors.text.inverse}
+`
 const titleBrand = (theme) => `
     font-size: ${theme.fontSizes.title};
     font-weight: ${theme.fontWeights.bold};
@@ -57,6 +61,7 @@ const variants = {
   label,
   title,
   titleBrand,
+  titleWhite,
 }
 
 export const Text = styled(RNText)`

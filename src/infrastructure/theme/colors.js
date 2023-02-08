@@ -17,6 +17,7 @@ export const colors = {
     primary: '#666AF6',
     secondary: '#FFFFFF',
     tertiary: '#F0F8FF',
+    quaternary: '#000000',
   },
   text: {
     primary: '#262626',

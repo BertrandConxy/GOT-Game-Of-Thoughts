@@ -1,27 +1,34 @@
 import React from 'react'
-import { StyleSheet, ImageBackground, View } from 'react-native'
+import {
+  StyleSheet,
+  ImageBackground,
+  View,
+  TouchableOpacity,
+} from 'react-native'
 import { Card, Text } from 'react-native-paper'
 
-const OptionCard = ({ imageCover, option }) => {
+const OptionCard = ({ imageCover, option, handlePress }) => {
   return (
-    <Card elevation={2} mode="elevated" style={styles.card}>
-      <Card.Content style={styles.cardContent}>
-        <ImageBackground
-          source={imageCover}
-          style={{
-            width: 340,
-            height: 200,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <View style={styles.imageCover} />
-          <Text style={styles.cardText} variant="titleLarge">
-            {option}
-          </Text>
-        </ImageBackground>
-      </Card.Content>
-    </Card>
+    <TouchableOpacity onPress={handlePress}>
+      <Card elevation={2} mode="elevated" style={styles.card}>
+        <Card.Content style={styles.cardContent}>
+          <ImageBackground
+            source={imageCover}
+            style={{
+              width: 340,
+              height: 200,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <View style={styles.imageCover} />
+            <Text style={styles.cardText} variant="titleLarge">
+              {option}
+            </Text>
+          </ImageBackground>
+        </Card.Content>
+      </Card>
+    </TouchableOpacity>
   )
 }
 
@@ -34,7 +41,7 @@ const styles = StyleSheet.create({
   },
   cardText: {
     color: '#fff',
-    fontSize: 25,
+    fontSize: 27,
     fontWeight: 'bold',
   },
   imageCover: {
