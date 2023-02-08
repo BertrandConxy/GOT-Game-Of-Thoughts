@@ -42,7 +42,7 @@ const title = (theme) => `
     font-weight: ${theme.fontWeights.bold};
 `
 const titleWhite = (theme) => `
-    font-size: 27px;
+    font-size: 26px;
     font-weight: ${theme.fontWeights.bold};
     color: ${theme.colors.text.inverse}
 `
