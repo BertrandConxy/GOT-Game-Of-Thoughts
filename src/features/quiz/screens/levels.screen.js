@@ -16,11 +16,12 @@ const LevelsScreen = ({ route, navigation }) => {
     <Wrapper>
       <ScrollContainer>
         {levels.map((lev) => (
-          <TouchableOpacity
-            key={lev.id}
-            onPress={() => navigation.navigate('QuizReady')}
-          >
-            <LevelButton name={lev.level} />
+          <TouchableOpacity key={lev.id}>
+            <LevelButton
+              name={lev.level}
+              status={lev.status}
+              handlePress={() => navigation.navigate('QuizReady')}
+            />
           </TouchableOpacity>
         ))}
       </ScrollContainer>
