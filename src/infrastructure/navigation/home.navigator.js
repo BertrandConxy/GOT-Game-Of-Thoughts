@@ -10,18 +10,12 @@ const HomeNavigator = () => {
     <HomeStack.Navigator
       screenOptions={{
         headerShown: false,
-        contentStyle: { paddingHorizontal: 10 },
       }}
     >
-      <HomeStack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{ contentStyle: { paddingHorizontal: 0 } }}
-      />
+      <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
       <HomeStack.Screen
         name="LeaderBoardScreen"
         component={LeaderBoardScreen}
-        options={{ contentStyle: { paddingHorizontal: 0 } }}
       />
     </HomeStack.Navigator>
   )
