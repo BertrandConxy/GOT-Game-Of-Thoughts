@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { TouchableOpacity } from 'react-native'
 import { SafeArea } from '../../../utils/safe-area.components'
-import CategoryCard from '../components/category-card.component'
 import LevelButton from '../components/level-button.component'
 import { ScrollContainer } from '../../../components/scroll-view/scroll-view.component'
 
