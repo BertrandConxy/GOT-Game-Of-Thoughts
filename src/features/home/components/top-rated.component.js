@@ -1,7 +1,6 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
 import { Text } from '../../../components/typography/text.component'
-import { Image } from 'react-native'
+import { topRated } from '../../../services/leaderboard/top-rated'
 import styled from 'styled-components/native'
 
 const TopRatedContainer = styled.View`
@@ -21,28 +20,19 @@ const TopRated = () => {
     <TopRatedContainer>
       <Profile>
         <ImageWrapper
-          source={{
-            uri:
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80',
-          }}
+          source={{ uri: topRated[1].imageUrl }}
           style={{ width: 90, height: 100 }}
         />
       </Profile>
       <Profile>
         <ImageWrapper
-          source={{
-            uri:
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80',
-          }}
+          source={{ uri: topRated[0].imageUrl }}
           style={{ width: 110, height: 120 }}
         />
       </Profile>
       <Profile>
         <ImageWrapper
-          source={{
-            uri:
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80',
-          }}
+          source={{ uri: topRated[2].imageUrl }}
           style={{ width: 80, height: 90 }}
         />
       </Profile>
@@ -51,5 +41,3 @@ const TopRated = () => {
 }
 
 export default TopRated
-
-const styles = StyleSheet.create({})
