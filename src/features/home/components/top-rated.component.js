@@ -28,8 +28,8 @@ const TopRated = () => {
         />
         <ProfileContent>
           <Text variant="caption">#2</Text>
-          <Text variant="label">Benny_clair</Text>
-          <Text variant="titleBrand">900</Text>
+          <Text variant="label">{topRated[1].userName}</Text>
+          <Text variant="titleBrand">{topRated[1].totalScore}</Text>
         </ProfileContent>
       </Profile>
       <Profile>
@@ -39,8 +39,8 @@ const TopRated = () => {
         />
         <ProfileContent>
           <Text variant="caption">#1</Text>
-          <Text variant="label">BertrandConxy</Text>
-          <Text variant="titleBrand">1000</Text>
+          <Text variant="label">{topRated[0].userName}</Text>
+          <Text variant="titleBrand">{topRated[0].totalScore}</Text>
         </ProfileContent>
       </Profile>
       <Profile>
@@ -50,8 +50,8 @@ const TopRated = () => {
         />
         <ProfileContent>
           <Text variant="caption">#3</Text>
-          <Text variant="label">BertrandConxy</Text>
-          <Text variant="titleBrand">800</Text>
+          <Text variant="label">{topRated[2].userName}</Text>
+          <Text variant="titleBrand">{topRated[2].totalScore}</Text>
         </ProfileContent>
       </Profile>
     </TopRatedContainer>
