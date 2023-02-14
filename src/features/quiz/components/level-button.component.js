@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Text } from '../../../components/typography/text.component'
 import { Button } from 'react-native-paper'
 
