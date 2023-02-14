@@ -4,22 +4,19 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Text } from '../../../components/typography/text.component'
 
 const Card = styled.View`
-  background-color: ${(props) => props.theme.colors.bg.quaternary};
+  background-color: ${(props) => props.theme.colors.brand.secondary};
   border-radius: 15px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   margin: 10px;
-  height: ${(props) => props.height}px;
+  height: 140px;
 `
 
-const CategoryCard = ({ height, name, status = null }) => {
+const CategoryCard = ({ name }) => {
   return (
-    <Card height={height}>
+    <Card>
       <Text variant="titleWhite">{name}</Text>
-      {status && status === 'closed' && (
-        <Icon name="lock" size={35} color="#fff" style={{ marginLeft: 10 }} />
-      )}
     </Card>
   )
 }

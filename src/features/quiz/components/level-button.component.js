@@ -6,7 +6,7 @@ import { Button } from 'react-native-paper'
 
 const Level = styled(Button)`
   background-color: ${(props) =>
-    props.status === 'open' ? '#000000' : '#9C9C9C'};
+    props.status === 'open' ? '#4B4FB6' : '#9C9C9C'};
   border-radius: 15px;
   justify-content: center;
   margin: 10px;
