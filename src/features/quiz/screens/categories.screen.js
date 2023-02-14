@@ -21,7 +21,7 @@ const CategoriesScreen = ({ navigation }) => {
               navigation.navigate('CategoryLevels', categories[category.id - 1])
             }
           >
-            <CategoryCard name={category.name} height={140} />
+            <CategoryCard name={category.name} />
           </TouchableOpacity>
         ))}
       </ScrollContainer>

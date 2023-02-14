@@ -1,22 +1,24 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import { ScrollView } from 'react-native'
+import { Divider } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
-import { Text } from '../../../components/typography/text.component'
+import { Spacer } from '../../../components/spacer/spacer.component'
+import Header from '../components/header.component'
 import TopRated from '../components/top-rated.component'
-
-const TopHeader = styled.View`
-  background-color: ${(props) => props.theme.colors.bg.primary};
-  padding: ${(props) => props.theme.space[2]};
-`
+import TopRiddles from '../components/top-riddles.component'
 
 const LeaderBoardScreen = () => {
   return (
-    <SafeArea>
-      <TopHeader>
-        <Text variant="titleWhite">GOTs</Text>
-      </TopHeader>
-      <TopRated />
-    </SafeArea>
+    <ScrollView>
+      <SafeArea>
+        <Header title="GOTs" size="primary" />
+        <TopRated />
+        <Spacer position="bottom" size="large" />
+        <Divider />
+        <Header title="Best In Riddles" />
+        <TopRiddles />
+      </SafeArea>
+    </ScrollView>
   )
 }
 
