@@ -4,6 +4,7 @@ import { SafeArea } from '../../../utils/safe-area.components'
 import { Spacer } from '../../../components/spacer/spacer.component'
 import Header from '../components/header.component'
 import TopRated from '../components/top-rated.component'
+import TopRiddles from '../components/top-riddles.component'
 
 const LeaderBoardScreen = () => {
   return (
@@ -13,6 +14,7 @@ const LeaderBoardScreen = () => {
       <Spacer position="bottom" size="large" />
       <Divider />
       <Header title="Best In Riddles" />
+      <TopRiddles />
     </SafeArea>
   )
 }
