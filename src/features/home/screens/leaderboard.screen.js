@@ -6,6 +6,7 @@ import { Spacer } from '../../../components/spacer/spacer.component'
 import Header from '../components/header.component'
 import TopRated from '../components/top-rated.component'
 import TopRiddles from '../components/top-riddles.component'
+import TopGk from '../components/top-gk.component'
 
 const LeaderBoardScreen = () => {
   return (
@@ -17,6 +18,9 @@ const LeaderBoardScreen = () => {
         <Divider />
         <Header title="Best In Riddles" />
         <TopRiddles />
+        <Divider />
+        <Header title="Best In GK" />
+        <TopGk />
       </SafeArea>
     </ScrollView>
   )

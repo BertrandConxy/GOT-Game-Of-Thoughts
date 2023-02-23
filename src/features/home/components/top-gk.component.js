@@ -3,7 +3,7 @@ import { View } from 'react-native'
 
 import ProfileCard from './profile-card.component'
 
-const TopRiddles = () => {
+const TopGk = () => {
   return (
     <View>
       <ProfileCard />
@@ -15,4 +15,4 @@ const TopRiddles = () => {
   )
 }
 
-export default TopRiddles
+export default TopGk
