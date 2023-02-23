@@ -9,7 +9,7 @@ export const options = [
     id: 2,
     option: 'B&BG',
     imageCover: require('../../../../assets/battle-vector-2.jpg'),
-    screenName: 'BattleScreen',
+    screenName: 'Battle',
   },
   {
     id: 3,
@@ -21,6 +21,6 @@ export const options = [
     id: 4,
     option: 'Surveys',
     imageCover: require('../../../../assets/survey-vector.jpg'),
-    screenName: 'ContestsScreen',
+    screenName: 'SurveysScreen',
   },
 ]
