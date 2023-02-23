@@ -8,7 +8,7 @@ import TopRated from '../components/top-rated.component'
 import TopRiddles from '../components/top-riddles.component'
 import TopGk from '../components/top-gk.component'
 
-const LeaderBoardScreen = () => {
+const SurveysScreen = () => {
   return (
     <ScrollView>
       <SafeArea>
@@ -26,4 +26,4 @@ const LeaderBoardScreen = () => {
   )
 }
 
-export default LeaderBoardScreen
+export default SurveysScreen
