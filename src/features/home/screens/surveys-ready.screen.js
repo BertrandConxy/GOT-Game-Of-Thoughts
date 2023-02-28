@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 import { Divider } from 'react-native-paper'
 import { SafeArea } from '../../../utils/safe-area.components'
 import { Spacer } from '../../../components/spacer/spacer.component'
@@ -9,8 +9,12 @@ import TopRiddles from '../components/top-riddles.component'
 import TopGk from '../components/top-gk.component'
 import QuestionnaireComponent from '../../../components/questionnaire/questionnaire.component'
 
-const ContestsScreen = ({ navigation }) => {
-  return <SafeArea></SafeArea>
+const SurveysReady = ({ navigation }) => {
+  return (
+    <SafeArea>
+      <Text>Contests Ready</Text>
+    </SafeArea>
+  )
 }
 
-export default ContestsScreen
+export default SurveysReady

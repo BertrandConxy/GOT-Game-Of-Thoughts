@@ -1,4 +1,4 @@
-const Questionnaire = {
+const Survey = {
   type: 'quiz',
   hasCountDown: true,
   counterSet: 15,
@@ -137,4 +137,4 @@ const Questionnaire = {
   ],
 }
 
-export default Questionnaire
+export default Survey
