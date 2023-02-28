@@ -20,11 +20,10 @@ const ListingComponent = ({ array }) => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity>
-              <ListingCard />
+              <ListingCard name={item.name} />
             </TouchableOpacity>
           )
         }}
-        keyExtractor={(item) => item.name}
       />
     </SafeArea>
   )

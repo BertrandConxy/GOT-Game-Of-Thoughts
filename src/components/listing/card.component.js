@@ -11,7 +11,7 @@ const Card = styled.View`
   height: 320px;
 `
 
-const ListingCard = ({ name = 'Bertrand' }) => {
+const ListingCard = ({ name }) => {
   return (
     <Card>
       <Text variant="titleWhite">{name}</Text>

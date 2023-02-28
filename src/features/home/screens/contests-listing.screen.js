@@ -6,7 +6,7 @@ import ListingComponent from '../../../components/listing/listing.component'
 import QuestionnaireComponent from '../../../components/questionnaire/questionnaire.component'
 
 const ContestsListing = ({ navigation }) => {
-  const array = new Array(10).fill('hello')
+  const array = new Array(10).fill({ name: 'Contests' })
   return (
     <SafeArea>
       <ListingComponent array={array} />
@@ -15,3 +15,4 @@ const ContestsListing = ({ navigation }) => {
 }
 
 export default ContestsListing
+// HANDLE THE CASE WHEN THERE ARE NO CONTESTS
