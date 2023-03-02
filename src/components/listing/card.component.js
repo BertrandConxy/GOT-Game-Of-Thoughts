@@ -11,10 +11,28 @@ const Card = styled.View`
   height: 320px;
 `
 
-const ListingCard = ({ name }) => {
+const ContentView = styled.View`
+  margin-top: ${(props) => props.theme.space[3]};
+`
+const PrizeView = styled.View`
+  margin-left: ${(props) => props.theme.space[4]};
+`
+
+const ListingCard = ({ name, deadline, prizes }) => {
   return (
     <Card>
       <Text variant="titleWhite">{name}</Text>
+      <ContentView>
+        <Text variant="bodyWhite">DeadLine: {deadline}</Text>
+        <Text variant="bodyWhite">Prizes:</Text>
+        <PrizeView>
+          {prizes.map((prize, index) => (
+            <Text key={index} variant="bodyWhite">
+              {prize}
+            </Text>
+          ))}
+        </PrizeView>
+      </ContentView>
     </Card>
   )
 }
