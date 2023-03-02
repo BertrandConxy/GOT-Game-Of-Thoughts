@@ -3,13 +3,12 @@ import { ScrollView, Text } from 'react-native'
 import { SafeArea } from '../../../utils/safe-area.components'
 
 import ListingComponent from '../../../components/listing/listing.component'
-import QuestionnaireComponent from '../../../components/questionnaire/questionnaire.component'
+import contests from '../../../services/contests/mock/contests'
 
 const ContestsListing = ({ navigation }) => {
-  const array = new Array(10).fill({ name: 'Contests' })
   return (
     <SafeArea>
-      <ListingComponent array={array} />
+      <ListingComponent array={contests} />
     </SafeArea>
   )
 }
