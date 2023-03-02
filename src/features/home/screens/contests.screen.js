@@ -9,7 +9,7 @@ const ContestsScreen = ({ navigation, route }) => {
       <QuestionnaireComponent
         navigation={navigation}
         Questionnaire={Questionnaire}
-        Next="QuizResults"
+        Next="Quiz"
       />
     </SafeArea>
   )
