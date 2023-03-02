@@ -3,13 +3,14 @@ const contests = [
     name: 'Hidden trophy',
     deadLine: '1/4/2023',
     prizes: ['5000RWF Note', 'T-shirt', 'Water bottle'],
-    type: 'contest',
+    type: 'Contest',
     hasCountDown: true,
     counterSet: 10,
     instructions: [
       'Contest comprises of 5 questions',
       'Each question has 5 points',
-      'To win the contest, you should score at least 20 out of 25 points, Wrong answer contributes nothing',
+      'To win the contest, you should score at least 20 out of 25 points',
+      'Wrong answer contributes nothing',
       'Each question has 10 seconds',
     ],
     questions: [
@@ -149,13 +150,14 @@ const contests = [
     name: 'BK challenge',
     deadLine: '1/4/2023',
     prizes: ['5000RWF Note', 'T-shirt', 'Water bottle'],
-    type: 'contest',
+    type: 'Contest',
     hasCountDown: true,
     counterSet: 10,
     instructions: [
       'Contest comprises of 5 questions',
       'Each question has 5 points',
-      'To win the contest, you should score at least 20 out of 25 points, Wrong answer contributes nothing',
+      'To win the contest, you should score at least 20 out of 25 points',
+      'Wrong answer contributes nothing',
       'Each question has 10 seconds',
     ],
     questions: [
