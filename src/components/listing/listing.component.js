@@ -20,7 +20,11 @@ const ListingComponent = ({ array }) => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity>
-              <ListingCard name={item.name} />
+              <ListingCard
+                name={item.name}
+                deadline={item.deadLine}
+                prizes={item.prizes}
+              />
             </TouchableOpacity>
           )
         }}
