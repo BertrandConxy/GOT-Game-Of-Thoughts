@@ -12,14 +12,16 @@ const Listing = styled(FlatList).attrs({
   },
 })``
 
-const ListingComponent = ({ array }) => {
+const ListingComponent = ({ array, navigation, Next }) => {
   return (
     <SafeArea>
       <Listing
         data={array}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate(Next, { contest: item })}
+            >
               <ListingCard
                 name={item.name}
                 deadline={item.deadLine}
