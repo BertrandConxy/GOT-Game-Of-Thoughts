@@ -16,16 +16,12 @@ import {
 } from '../../features/quiz/components/quiz.styles'
 import Questionnaire from '../../services/quiz/mock/questions'
 
-const QuestionnaireComponent = ({
-  navigation,
-  Questions = Questionnaire.questions,
-  Counter = Questionnaire.counterSet,
-  NextRoute = 'QuizResults',
-}) => {
+const QuestionnaireComponent = ({ navigation, Next, Questionnaire }) => {
+  const { name, hasCountDown, counterSet, questions } = Questionnaire
   // index of question
   const [index, setIndex] = useState(0)
   // current question
-  const currentQuestion = Questions[index]
+  const currentQuestion = questions[index]
   const { question, options, correctAnswerIndex } = currentQuestion
   // points
   const [points, setPoints] = useState(0)
@@ -36,12 +32,12 @@ const QuestionnaireComponent = ({
   // selected answer
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null)
   // counter
-  const [counter, setCounter] = useState(Counter)
+  const [counter, setCounter] = useState(counterSet)
   // interval
   let interval = null
 
   // Progress bar
-  const progressPercentage = index / Questionnaire.questions.length
+  const progressPercentage = index / questions.length
 
   // Pressing the correct answer option
   useEffect(() => {
@@ -69,12 +65,12 @@ const QuestionnaireComponent = ({
       setCounter((counter) => counter - 1)
     }
     if (counter === 0) {
-      if (index + 2 > Questionnaire.questions.length) {
-        navigation.navigate(NextRoute, { answers: answers, points: points })
+      if (index + 2 > questions.length) {
+        navigation.navigate(Next, { answers: answers, points: points })
         return
       }
       setIndex((index) => index + 1)
-      setCounter(Counter)
+      setCounter(counterSet)
     }
   }
 
@@ -89,22 +85,20 @@ const QuestionnaireComponent = ({
   // If the index changes
   useEffect(() => {
     if (!interval) {
-      setCounter(Counter)
+      setCounter(counterSet)
     }
   }, [index])
 
   return (
     <SafeArea>
       <TopContainer>
-        <Text variant="titleBrand">Quiz Challenge 1</Text>
-        {Questionnaire.hasCountDown ? (
-          <TimerBg size={45}>{counter}</TimerBg>
-        ) : null}
+        <Text variant="titleBrand">{name}</Text>
+        {hasCountDown ? <TimerBg size={45}>{counter}</TimerBg> : null}
       </TopContainer>
       <TopContainer>
         <Text>Your Progress</Text>
         <Text>
-          ({index}/{Questionnaire.questions.length}) questions answered
+          ({index}/{questions.length}) questions answered
         </Text>
       </TopContainer>
       {/* Progress bar */}
@@ -168,7 +162,7 @@ const QuestionnaireComponent = ({
           {index + 1 >= Questionnaire.questions.length ? (
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate('QuizResults', {
+                navigation.navigate(Next, {
                   answers: answers,
                   points: points,
                 })
