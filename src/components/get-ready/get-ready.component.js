@@ -16,8 +16,8 @@ const RulesContainer = styled.View`
   border-radius: ${(props) => props.theme.sizes[0]};
 `
 
-const GetReadyComponent = ({ navigation, Next, contest }) => {
-  const { type, instructions } = contest
+const GetReadyComponent = ({ navigation, Next, Questionnaire }) => {
+  const { type, instructions } = Questionnaire
   return (
     <ReadyView>
       <Image
@@ -35,7 +35,9 @@ const GetReadyComponent = ({ navigation, Next, contest }) => {
         ))}
       </RulesContainer>
       <TouchableOpacity
-        onPress={() => navigation.navigate(Next, { challenge: contest })}
+        onPress={() =>
+          navigation.navigate(Next, { Questionnaire: Questionnaire })
+        }
       >
         <Button
           icon="flag-checkered"

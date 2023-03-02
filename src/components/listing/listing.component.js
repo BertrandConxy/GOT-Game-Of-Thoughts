@@ -20,7 +20,7 @@ const ListingComponent = ({ array, navigation, Next }) => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate(Next, { contest: item })}
+              onPress={() => navigation.navigate(Next, { ListItem: item })}
             >
               <ListingCard
                 name={item.name}
