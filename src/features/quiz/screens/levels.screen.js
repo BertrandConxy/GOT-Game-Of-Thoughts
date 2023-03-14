@@ -19,7 +19,9 @@ const LevelsScreen = ({ route, navigation }) => {
             <LevelButton
               name={lev.level}
               status={lev.status}
-              handlePress={() => navigation.navigate('QuizReady')}
+              handlePress={() =>
+                navigation.navigate('QuizReady', { id: lev.questionnaireId })
+              }
             />
           </TouchableOpacity>
         ))}
