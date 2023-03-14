@@ -20,7 +20,7 @@ const LevelsScreen = ({ route, navigation }) => {
               name={lev.level}
               status={lev.status}
               handlePress={() =>
-                navigation.navigate('QuizReady', { id: lev.questionnaireId })
+                navigation.navigate('QuizReady', { id: lev.level })
               }
             />
           </TouchableOpacity>
