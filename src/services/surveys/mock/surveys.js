@@ -1,9 +1,15 @@
 const surveys = [
   {
-    type: 'quiz',
+    name: 'BRALIRWA survey',
+    deadLine: '1/4/2023',
+    prizes: ['5000RWF Note', 'T-shirt', 'Water bottle'],
+    type: 'Survey',
     hasCountDown: true,
-    counterSet: 15,
-    instructions: [],
+    counterSet: 10,
+    instructions: [
+      'Survey comprises of 5 questions',
+      'Each question has 10 seconds',
+    ],
     questions: [
       {
         question: 'In what continent is Indonesia?',
@@ -138,10 +144,19 @@ const surveys = [
     ],
   },
   {
-    type: 'quiz',
+    name: 'BK survey',
+    deadLine: '1/4/2023',
+    prizes: ['5000RWF Note', 'T-shirt', 'Water bottle'],
+    type: 'Survey',
     hasCountDown: true,
-    counterSet: 15,
-    instructions: [],
+    counterSet: 10,
+    instructions: [
+      'Contest comprises of 5 questions',
+      'Each question has 5 points',
+      'To win the contest, you should score at least 20 out of 25 points',
+      'Wrong answer contributes nothing',
+      'Each question has 10 seconds',
+    ],
     questions: [
       {
         question: 'In what continent is Indonesia?',
@@ -274,7 +289,7 @@ const surveys = [
         correctAnswerIndex: 2,
       },
     ],
-  }
+  },
 ]
 
 export default surveys
