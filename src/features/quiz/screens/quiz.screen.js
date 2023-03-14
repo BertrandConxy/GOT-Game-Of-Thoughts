@@ -4,10 +4,15 @@ import QuestionnaireComponent from '../../../components/questionnaire/questionna
 
 const QuizView = styled.View``
 
-const QuizScreen = ({ navigation }) => {
+const QuizScreen = ({ navigation, route }) => {
+  const { Questionnaire } = route.params
   return (
     <QuizView>
-      <QuestionnaireComponent navigation={navigation} />
+      <QuestionnaireComponent
+        navigation={navigation}
+        Questionnaire={Questionnaire}
+        Next="QuizResults"
+      />
     </QuizView>
   )
 }

@@ -1,8 +1,15 @@
 const Questionnaire = {
+  name: 'challenge 1',
   type: 'quiz',
   hasCountDown: true,
   counterSet: 15,
-  instructions: [],
+  instructions: [
+    'Contest comprises of 5 questions',
+    'Each question has 5 points',
+    'To win the contest, you should score at least 20 out of 25 points',
+    'Wrong answer contributes nothing',
+    'Each question has 10 seconds',
+  ],
   questions: [
     {
       question: 'In what continent is Indonesia?',
