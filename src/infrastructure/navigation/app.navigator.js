@@ -10,7 +10,7 @@ import QuizNavigator from './quiz.navigator'
 const BattleScreen = () => {
   return (
     <SafeArea>
-      <Text>BattleScreen</Text>
+      <Text>This is the battle screen that is going to be built</Text>
     </SafeArea>
   )
 }
