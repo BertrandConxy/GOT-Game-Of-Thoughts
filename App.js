@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar'
 import { ThemeProvider } from 'styled-components'
 import styled from 'styled-components'
 import Navigation from './src/infrastructure/navigation'
+import { AuthenticationContextProvider } from './src/services/authentication/authentication.context'
 import { theme } from './src/infrastructure/theme'
 import {
   useFonts as useOswald,
@@ -27,10 +28,12 @@ export default function App() {
   `
   return (
     <ThemeProvider theme={theme}>
-      <AppView>
-        <Navigation />
-        <StatusBar style="auto" />
-      </AppView>
+      <AuthenticationContextProvider>
+        <AppView>
+          <Navigation />
+          <StatusBar style="auto" />
+        </AppView>
+      </AuthenticationContextProvider>
     </ThemeProvider>
   )
 }

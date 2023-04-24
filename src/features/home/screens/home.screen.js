@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { options } from '../components/options'
 import OptionCard from '../components/option-card.component'
 import { Text } from 'react-native-paper'
-import {app} from ''
 
 const HomeScreen = ({ navigation }) => {
   return (
