@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 import { colors } from '../../../infrastructure/theme/colors'
-import { Button, TextInput } from 'react-native-paper'
+import { TextInput } from 'react-native-paper'
 
 export const ImageContainer = styled.View`
   align-items: center;
@@ -17,13 +17,6 @@ export const BattleInput = styled(TextInput).attrs({
   underlineColor: colors.brand.secondary,
   activeUnderlineColor: colors.brand.primary,
 })``
-
-export const BattleButton = styled(Button).attrs({
-  buttonColor: colors.brand.primary,
-})`
-  padding: ${(props) => props.theme.space[2]};
-  border-radius: 10px;
-`
 
 export const Centered = styled.View`
   align-items: center;

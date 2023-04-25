@@ -5,7 +5,6 @@ import {
   ImageContainer,
   InviteContainer,
   BattleInput,
-  BattleButton,
   Centered,
   InviteCodeContainer,
   Container,
@@ -14,7 +13,7 @@ import { Text } from '../../../components/typography/text.component'
 import { Spacer } from '../../../components/spacer/spacer.component'
 import Button from '../../../components/button/button.component'
 
-const InviteScreen = () => {
+const InviteScreen = ({ navigation }) => {
   const [code, setCode] = useState('')
   return (
     <SafeArea>
@@ -37,7 +36,7 @@ const InviteScreen = () => {
           <Spacer position="bottom" size="medium"></Spacer>
           <Button
             text="Join Battle"
-            handleClick={() => console.log('clicked join battle')}
+            handleClick={() => navigation.navigate('GetReadyScreen')}
           />
           <Spacer position="top" size="medium"></Spacer>
           <Centered>

@@ -1,12 +1,52 @@
 import React from 'react'
-import { Text } from 'react-native-paper'
-import { SafeArea } from '../../../utils/safe-area.components'
+import { TouchableOpacity } from 'react-native'
+import { Button } from 'react-native-paper'
+import styled from 'styled-components/native'
+import { theme } from '../../../infrastructure/theme'
+import { Text } from '../../../components/typography/text.component'
+import { Spacer } from '../../../components/spacer/spacer.component'
 
-const GetReady = () => {
+const ReadyView = styled.View`
+  align-items: center;
+`
+const RulesContainer = styled.View`
+  background-color: ${(props) => props.theme.colors.bg.primary};
+  padding: ${(props) => props.theme.space[3]};
+  margin: ${(props) => props.theme.space[3]};
+  border-radius: ${(props) => props.theme.sizes[0]};
+`
+
+const GetReady = ({ navigation }) => {
   return (
-    <SafeArea>
-      <Text>GetReady</Text>
-    </SafeArea>
+    <ReadyView>
+      <Spacer position="top" size="medium" />
+      <Text variant="titleBrand">Quiz Rules</Text>
+      <Spacer position="bottom" size="small" />
+      <RulesContainer>
+        <Text variant="bodyWhite">
+          {' '}
+          * For each correct answer you get 5 points{' '}
+        </Text>
+        <Text variant="bodyWhite">
+          {' '}
+          * There is no negative marking for the wrong answer{' '}
+        </Text>
+        <Text variant="bodyWhite">
+          {' '}
+          * Each question has a time of 15 seconds{' '}
+        </Text>
+        <Text variant="bodyWhite"> * All questions are compulsory </Text>
+      </RulesContainer>
+      <TouchableOpacity onPress={() => navigation.navigate('QuizRunning')}>
+        <Button
+          icon="flag-checkered"
+          mode="contained"
+          buttonColor={theme.colors.bg.primary}
+        >
+          Start Quiz
+        </Button>
+      </TouchableOpacity>
+    </ReadyView>
   )
 }
 
