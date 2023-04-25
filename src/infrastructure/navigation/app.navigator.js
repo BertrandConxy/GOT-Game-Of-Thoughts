@@ -6,14 +6,8 @@ import { theme } from '../theme'
 import { SafeArea } from '../../utils/safe-area.components'
 import HomeNavigator from './home.navigator'
 import QuizNavigator from './quiz.navigator'
+import BattleNavigator from './battle.navigator'
 
-const BattleScreen = () => {
-  return (
-    <SafeArea>
-      <Text>BattleScreen</Text>
-    </SafeArea>
-  )
-}
 const ProfileScreen = () => {
   return (
     <SafeArea>
@@ -45,7 +39,7 @@ const AppNavigator = () => {
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name="Home" component={HomeNavigator} />
       <Tab.Screen name="Quiz" component={QuizNavigator} />
-      <Tab.Screen name="Battle" component={BattleScreen} />
+      <Tab.Screen name="Battle" component={BattleNavigator} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   )
