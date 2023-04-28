@@ -14,6 +14,7 @@ import { AuthenticationContext } from '../../../services/authentication/authenti
 const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [userData, setUserData] = useState({ score: 0 })
   const [confirmPassword, setConfirmPassword] = useState('')
   const { onRegister, error, isLoading } = useContext(AuthenticationContext)
   return (
@@ -29,7 +30,7 @@ const RegisterScreen = ({ navigation }) => {
               textContentType="emailAddress"
               keyboardType="email-address"
               autoCapitalize="none"
-              onChangeText={(u) => setEmail(u)}
+              onChangeText={(u) => setUserData({ ...userData, email: u })}
             />
             <Spacer size="large" />
             <AuthInput
@@ -38,7 +39,7 @@ const RegisterScreen = ({ navigation }) => {
               textContentType="password"
               secureTextEntry
               autoCapitalize="none"
-              onChangeText={(p) => setPassword(p)}
+              onChangeText={(p) => setUserData({ ...userData, password: p })}
             />
             <Spacer size="large" />
             <AuthInput
@@ -54,7 +55,7 @@ const RegisterScreen = ({ navigation }) => {
               icon="email"
               mode="contained"
               onPress={() => {
-                onRegister(email, password, confirmPassword)
+                onRegister(userData, confirmPassword)
               }}
             >
               Register
