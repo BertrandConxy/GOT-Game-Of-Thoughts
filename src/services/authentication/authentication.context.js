@@ -42,10 +42,10 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   }
 
-  const onRegister = async (email, password, confirmPassword) => {
+  const onRegister = async (userData, confirmPassword) => {
     setIsLoading(true)
     try {
-      const user = await register(email, password, confirmPassword)
+      const user = await register(userData, confirmPassword)
       setUser(user)
       setIsLoading(false)
       setIsAuthenticated(true)

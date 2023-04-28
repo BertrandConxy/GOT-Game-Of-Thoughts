@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { ActivityIndicator, MD2Colors } from 'react-native-paper'
 
 import { Text } from '../../../components/typography/text.component'
@@ -14,9 +14,22 @@ import { AuthenticationContext } from '../../../services/authentication/authenti
 const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [userData, setUserData] = useState({ score: 0 })
+  const [userData, setUserData] = useState({
+    email: '',
+    password: '',
+    score: 0,
+  })
   const [confirmPassword, setConfirmPassword] = useState('')
   const { onRegister, error, isLoading } = useContext(AuthenticationContext)
+
+  useEffect(() => {
+    setUserData({ ...userData, email: email, password: password })
+  }, [email, password])
+
+  useEffect(() => {
+    console.log(userData)
+  }, [email, password])
+
   return (
     <AccountBackground>
       <AccountContainer>
@@ -30,7 +43,7 @@ const RegisterScreen = ({ navigation }) => {
               textContentType="emailAddress"
               keyboardType="email-address"
               autoCapitalize="none"
-              onChangeText={(u) => setUserData({ ...userData, email: u })}
+              onChangeText={(u) => setEmail(u)}
             />
             <Spacer size="large" />
             <AuthInput
@@ -39,7 +52,7 @@ const RegisterScreen = ({ navigation }) => {
               textContentType="password"
               secureTextEntry
               autoCapitalize="none"
-              onChangeText={(p) => setUserData({ ...userData, password: p })}
+              onChangeText={(p) => setPassword(p)}
             />
             <Spacer size="large" />
             <AuthInput

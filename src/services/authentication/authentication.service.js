@@ -3,8 +3,6 @@ import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth'
 import { auth } from '../../../firebase'
-import { doc, setDoc } from 'firebase/firestore'
-import { db } from '../../../firebase'
 
 export const login = async (email, password) => {
   try {
@@ -26,11 +24,8 @@ export const register = async (userData, confirmPassword) => {
       userData.email,
       userData.password,
     )
-    const user = setDoc(doc(db, 'users', authUser.user.uid), {
-      name: 'CK',
-      score: userData.score,
-    })
-    return user
+
+    return authUser
   } catch (error) {
     throw error
   }
