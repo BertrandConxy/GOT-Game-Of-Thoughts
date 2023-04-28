@@ -7,6 +7,8 @@ import Header from '../components/header.component'
 import { topRated } from '../../../services/leaderboard/top-rated'
 import styled from 'styled-components/native'
 import { Text } from '../../../components/typography/text.component'
+// import Button from '../../../components/button/button.component'
+import { Button } from 'react-native-paper'
 
 import TopRiddles from '../components/top-riddles.component'
 
@@ -22,13 +24,17 @@ const ImageWrapper = styled.Image`
   border-radius: ${(props) => props.theme.sizes[0]};
 `
 
+const CtaContainer = styled.View`
+  flex-flow: row;
+  justify-content: space-around;
+`
+
 const BattleResult = () => {
   return (
     <ScrollView>
       <SafeArea>
         <Header title="GOT" />
         <Spacer position="bottom" size="large" />
-
         <Profile>
           <ImageWrapper
             source={{ uri: topRated[0].imageUrl }}
@@ -45,6 +51,17 @@ const BattleResult = () => {
         <Header title="Other Participants Scores" />
         <TopRiddles />
         <Divider />
+        <CtaContainer>
+          {/* <Button
+            handleClick={() => console.log('turn to replay')}
+            text="Re-Battle"
+          />
+          <Button
+            handleClick={() => console.log('turn to replay')}
+            text="Re-Battle"
+          /> */}
+          <Button mode="outlined">Back</Button>
+        </CtaContainer>
       </SafeArea>
     </ScrollView>
   )
