@@ -1,6 +1,8 @@
 import React, { useState, createContext } from 'react'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../../../firebase'
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore'
+import { db } from '../../../firebase'
 import { login, register } from './authentication.service'
 
 export const AuthenticationContext = createContext()
@@ -42,10 +44,16 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   }
 
-  const onRegister = async (userData, confirmPassword) => {
+  const onRegister = async (userData,confirmPassword) => {
     setIsLoading(true)
     try {
       const user = await register(userData, confirmPassword)
+      const userRef = doc(db, 'users', user.uid)
+      await setDoc(userRef,{  
+        name: userData.email,
+        score: 0,
+        createdAt: serverTimestamp(),
+      })
       setUser(user)
       setIsLoading(false)
       setIsAuthenticated(true)

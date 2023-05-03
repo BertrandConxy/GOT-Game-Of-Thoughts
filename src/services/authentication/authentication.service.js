@@ -19,13 +19,13 @@ export const register = async (userData, confirmPassword) => {
     if (userData.password !== confirmPassword) {
       throw new Error('Passwords do not match')
     }
-    const { authUser } = await createUserWithEmailAndPassword(
+    const { user } = await createUserWithEmailAndPassword(
       auth,
       userData.email,
       userData.password,
     )
 
-    return authUser
+    return user
   } catch (error) {
     throw error
   }

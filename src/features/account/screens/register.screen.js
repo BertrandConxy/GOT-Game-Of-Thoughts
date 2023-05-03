@@ -26,10 +26,6 @@ const RegisterScreen = ({ navigation }) => {
     setUserData({ ...userData, email: email, password: password })
   }, [email, password])
 
-  useEffect(() => {
-    console.log(userData)
-  }, [email, password])
-
   return (
     <AccountBackground>
       <AccountContainer>
