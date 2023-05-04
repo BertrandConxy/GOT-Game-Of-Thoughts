@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { Button } from 'react-native-paper'
 import styled from 'styled-components/native'
 import { theme } from '../../../infrastructure/theme'
 import { Text } from '../../../components/typography/text.component'
 import { Spacer } from '../../../components/spacer/spacer.component'
+
+import { db } from '../../../../firebase'
+import { doc, getDoc, onSnapshot } from 'firebase/firestore'
 
 const ReadyView = styled.View`
   align-items: center;
@@ -31,12 +34,33 @@ const Players = styled.Text`
   font-size: 120px;
 `
 
-const GetReady = ({ navigation }) => {
+const GetReady = ({ navigation, route }) => {
+  const [players, setPlayers] = useState(0)
+  const { gameId } = route.params
+
+  const getPlayers = async () => {
+    const gameSessionRef = doc(db, 'gameSessions', gameId)
+    const gameSessionDoc = await getDoc(gameSessionRef)
+    const gameSessionData = gameSessionDoc.data()
+    setPlayers(gameSessionData.players.length)
+  }
+  useEffect(() => {
+    const gameSessionRef = doc(db, 'gameSessions', gameId)
+
+    // Listen for changes to the gameSession document
+    const unsubscribe = onSnapshot(gameSessionRef, (doc) => {
+      const gameSessionData = doc.data()
+      setPlayers(gameSessionData.players.length)
+    })
+
+    return () => unsubscribe()
+  }, [gameId])
+
   return (
     <ReadyView>
       <PlayersContainer>
         <Text variant="titleBrand">Number of Participants</Text>
-        <Players>5</Players>
+        <Players>{players}</Players>
       </PlayersContainer>
       <Spacer position="top" size="medium" />
       <RulesContainer>
