@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { Button } from 'react-native-paper'
 import styled from 'styled-components/native'
@@ -8,6 +8,7 @@ import { Spacer } from '../../../components/spacer/spacer.component'
 
 import { db } from '../../../../firebase'
 import { doc, getDoc, onSnapshot } from 'firebase/firestore'
+import { AuthenticationContext } from '../../../services/authentication/authentication.context'
 
 const ReadyView = styled.View`
   align-items: center;
@@ -36,21 +37,22 @@ const Players = styled.Text`
 
 const GetReady = ({ navigation, route }) => {
   const [players, setPlayers] = useState(0)
+  const [isLeader, setIsLeader] = useState(false)
+  const { user } = useContext(AuthenticationContext)
   const { gameId } = route.params
 
-  const getPlayers = async () => {
-    const gameSessionRef = doc(db, 'gameSessions', gameId)
-    const gameSessionDoc = await getDoc(gameSessionRef)
-    const gameSessionData = gameSessionDoc.data()
-    setPlayers(gameSessionData.players.length)
-  }
   useEffect(() => {
-    const gameSessionRef = doc(db, 'gameSessions', gameId)
-
     // Listen for changes to the gameSession document
+    const gameSessionRef = doc(db, 'gameSessions', gameId)
     const unsubscribe = onSnapshot(gameSessionRef, (doc) => {
       const gameSessionData = doc.data()
+      const gameSessionLeaderId = gameSessionData.leaderId
+      const playerId = user.uid
       setPlayers(gameSessionData.players.length)
+
+      if (playerId === gameSessionLeaderId) {
+        setIsLeader(true)
+      }
     })
 
     return () => unsubscribe()
@@ -81,15 +83,19 @@ const GetReady = ({ navigation, route }) => {
           </Text>
           <Text variant="bodyWhite"> * All questions are compulsory </Text>
         </Rules>
-        <TouchableOpacity onPress={() => navigation.navigate('BattleScreen')}>
-          <Button
-            icon="flag-checkered"
-            mode="contained"
-            buttonColor={theme.colors.bg.primary}
-          >
-            Start Quiz
-          </Button>
-        </TouchableOpacity>
+        {isLeader ? (
+          <TouchableOpacity onPress={() => navigation.navigate('BattleScreen')}>
+            <Button
+              icon="flag-checkered"
+              mode="contained"
+              buttonColor={theme.colors.bg.primary}
+            >
+              Start Quiz
+            </Button>
+          </TouchableOpacity>
+        ) : (
+          <Text>Wait till game starts</Text>
+        )}
       </RulesContainer>
     </ReadyView>
   )

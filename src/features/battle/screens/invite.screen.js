@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Image, ScrollView } from 'react-native'
 import { SafeArea } from '../../../utils/safe-area.components'
 import {
