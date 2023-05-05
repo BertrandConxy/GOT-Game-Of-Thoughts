@@ -7,7 +7,7 @@ import { Text } from '../../../components/typography/text.component'
 import { Spacer } from '../../../components/spacer/spacer.component'
 
 import { db } from '../../../../firebase'
-import { doc, getDoc, onSnapshot } from 'firebase/firestore'
+import { doc, getDoc, onSnapshot, updateDoc } from 'firebase/firestore'
 import { AuthenticationContext } from '../../../services/authentication/authentication.context'
 
 const ReadyView = styled.View`
@@ -38,8 +38,26 @@ const Players = styled.Text`
 const GetReady = ({ navigation, route }) => {
   const [players, setPlayers] = useState(0)
   const [isLeader, setIsLeader] = useState(false)
+  const [gameStarted, setGameStarted] = useState(false)
   const { user } = useContext(AuthenticationContext)
   const { gameId } = route.params
+
+  const startBattle = async (gameId) => {
+    try {
+      const gameSessionRef = doc(db, 'gameSessions', gameId)
+      const gameSessionDoc = await getDoc(gameSessionRef)
+      const gameSessionData = gameSessionDoc.data()
+
+      await updateDoc(gameSessionRef, {
+        state: {
+          ...gameSessionData.state,
+          gameStarted: true,
+        },
+      })
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   useEffect(() => {
     // Listen for changes to the gameSession document
@@ -57,6 +75,26 @@ const GetReady = ({ navigation, route }) => {
 
     return () => unsubscribe()
   }, [gameId])
+
+  useEffect(() => {
+    // Listen for changes to the gameSession document
+    const gameSessionRef = doc(db, 'gameSessions', gameId)
+    const unsubscribe = onSnapshot(gameSessionRef, (doc) => {
+      const gameSessionData = doc.data()
+      const Questionnaire = gameSessionData.options.questionnaire
+      const TimeLimit = gameSessionData.options.timeLimit
+      setGameStarted(gameSessionData.state.gameStarted)
+
+      if (gameStarted) {
+        navigation.navigate('BattleScreen', {
+          Questionnaire: Questionnaire,
+          TimeLimit: TimeLimit,
+        })
+      }
+    })
+
+    return () => unsubscribe()
+  }, [gameStarted])
 
   return (
     <ReadyView>
@@ -84,7 +122,7 @@ const GetReady = ({ navigation, route }) => {
           <Text variant="bodyWhite"> * All questions are compulsory </Text>
         </Rules>
         {isLeader ? (
-          <TouchableOpacity onPress={() => navigation.navigate('BattleScreen')}>
+          <TouchableOpacity onPress={() => startBattle(gameId)}>
             <Button
               icon="flag-checkered"
               mode="contained"
