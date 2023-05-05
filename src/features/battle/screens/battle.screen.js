@@ -14,14 +14,11 @@ import {
   NextButton,
   TimerBg,
 } from '../../../features/quiz/components/quiz.styles'
-import Questionnaires from '../../../services/quiz/mock/questions'
+// import Questionnaires from '../../../services/quiz/mock/questions'
 
-const Battle = ({
-  navigation = navigation,
-  Next = 'BattleResultScreen',
-  Questionnaire = Questionnaires,
-}) => {
-  const { name, hasCountDown, counterSet, questions } = Questionnaire
+const Battle = ({ navigation, route }) => {
+  const { Questionnaire, TimeLimit } = route.params
+  const { questions } = Questionnaire
   // index of question
   const [index, setIndex] = useState(0)
   // current question
@@ -36,7 +33,7 @@ const Battle = ({
   // selected answer
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null)
   // counter
-  const [counter, setCounter] = useState(counterSet)
+  const [counter, setCounter] = useState(TimeLimit)
   // interval
   let interval = null
 
@@ -69,7 +66,10 @@ const Battle = ({
       setCounter((counter) => counter - 1)
     }
     if (counter === 0) {
-      navigation.navigate(Next, { answers: answers, points: points })
+      navigation.navigate('BattleResultScreen', {
+        answers: answers,
+        points: points,
+      })
       return
     }
   }
@@ -84,104 +84,107 @@ const Battle = ({
 
   return (
     <SafeArea>
-      <TopContainer>
-        <Text variant="titleBrand">{name}</Text>
-        {hasCountDown ? <TimerBg size={45}>{counter}</TimerBg> : null}
-      </TopContainer>
-      <TopContainer>
-        <Text>Your Progress</Text>
-        <Text>
-          ({index}/{questions.length}) questions answered
-        </Text>
-      </TopContainer>
-      {/* Progress bar */}
-      <ProgressBar
-        progress={progressPercentage}
-        color={theme.colors.bg.primary}
-      />
-      <QuestionContainer>
-        <Text variant="title">{question}</Text>
-        <ScrollView>
-          {options.map((opt) => (
-            <TouchableOpacity
-              key={opt.id}
-              onPress={() => {
-                selectedAnswerIndex === null && setSelectedAnswerIndex(opt.id)
-              }}
-            >
-              <QuestionBox
-                style={
-                  selectedAnswerIndex === opt.id && opt.id == correctAnswerIndex
-                    ? [styles.correct]
-                    : selectedAnswerIndex != null &&
-                      selectedAnswerIndex == opt.id
-                    ? [styles.wrong]
-                    : null
+      <ScrollView>
+        <TopContainer>
+          <Text variant="titleBrand">Battle</Text>
+          <TimerBg size={45}>{counter}</TimerBg>
+        </TopContainer>
+        <TopContainer>
+          <Text>Your Progress</Text>
+          <Text>
+            ({index}/{questions.length}) questions answered
+          </Text>
+        </TopContainer>
+        {/* Progress bar */}
+        <ProgressBar
+          progress={progressPercentage}
+          color={theme.colors.bg.primary}
+        />
+        <QuestionContainer>
+          <Text variant="title">{question}</Text>
+          <ScrollView>
+            {options.map((opt) => (
+              <TouchableOpacity
+                key={opt.id}
+                onPress={() => {
+                  selectedAnswerIndex === null && setSelectedAnswerIndex(opt.id)
+                }}
+              >
+                <QuestionBox
+                  style={
+                    selectedAnswerIndex === opt.id &&
+                    opt.id == correctAnswerIndex
+                      ? [styles.correct]
+                      : selectedAnswerIndex != null &&
+                        selectedAnswerIndex == opt.id
+                      ? [styles.wrong]
+                      : null
+                  }
+                >
+                  <Rounded>
+                    {selectedAnswerIndex === opt.id &&
+                    opt.id == correctAnswerIndex ? (
+                      <Icon
+                        name="check"
+                        size={22}
+                        color={theme.colors.ui.success}
+                      />
+                    ) : selectedAnswerIndex != null &&
+                      selectedAnswerIndex == opt.id ? (
+                      <Icon
+                        name="cross"
+                        size={22}
+                        color={theme.colors.ui.error}
+                      />
+                    ) : (
+                      <Text>{opt.options}</Text>
+                    )}
+                  </Rounded>
+                  <Text>{opt.answer}</Text>
+                </QuestionBox>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </QuestionContainer>
+        {answerStatus === null ? null : (
+          <AnswerStatusView>
+            {answerStatus === null ? null : (
+              <Text variant="title" style={{ textAlign: 'center' }}>
+                {!!answerStatus ? 'Correct Answer' : 'Wrong Answer'}
+              </Text>
+            )}
+
+            {index + 1 >= Questionnaire.questions.length ? (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('BattleScreenResult', {
+                    answers: answers,
+                    points: points,
+                  })
                 }
               >
-                <Rounded>
-                  {selectedAnswerIndex === opt.id &&
-                  opt.id == correctAnswerIndex ? (
-                    <Icon
-                      name="check"
-                      size={22}
-                      color={theme.colors.ui.success}
-                    />
-                  ) : selectedAnswerIndex != null &&
-                    selectedAnswerIndex == opt.id ? (
-                    <Icon
-                      name="cross"
-                      size={22}
-                      color={theme.colors.ui.error}
-                    />
-                  ) : (
-                    <Text>{opt.options}</Text>
-                  )}
-                </Rounded>
-                <Text>{opt.answer}</Text>
-              </QuestionBox>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-      </QuestionContainer>
-      {answerStatus === null ? null : (
-        <AnswerStatusView>
-          {answerStatus === null ? null : (
-            <Text variant="title" style={{ textAlign: 'center' }}>
-              {!!answerStatus ? 'Correct Answer' : 'Wrong Answer'}
-            </Text>
-          )}
-
-          {index + 1 >= Questionnaire.questions.length ? (
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate(Next, {
-                  answers: answers,
-                  points: points,
-                })
-              }
-            >
-              <NextButton
-                icon="check-decagram"
-                mode="contained"
-                buttonColor={theme.colors.bg.primary}
-              >
-                Done
-              </NextButton>
-            </TouchableOpacity>
-          ) : answerStatus === null ? null : (
-            <TouchableOpacity onPress={() => setIndex(index + 1)}>
-              <NextButton
-                mode="contained"
-                icon="skip-next"
-                buttonColor={theme.colors.bg.primary}
-              >
-                Next Question
-              </NextButton>
-            </TouchableOpacity>
-          )}
-        </AnswerStatusView>
-      )}
+                <NextButton
+                  icon="check-decagram"
+                  mode="contained"
+                  buttonColor={theme.colors.bg.primary}
+                >
+                  Done
+                </NextButton>
+              </TouchableOpacity>
+            ) : answerStatus === null ? null : (
+              <TouchableOpacity onPress={() => setIndex(index + 1)}>
+                <NextButton
+                  mode="contained"
+                  icon="skip-next"
+                  buttonColor={theme.colors.bg.primary}
+                >
+                  Next Question
+                </NextButton>
+              </TouchableOpacity>
+            )}
+          </AnswerStatusView>
+        )}
+      </ScrollView>
     </SafeArea>
   )
 }
